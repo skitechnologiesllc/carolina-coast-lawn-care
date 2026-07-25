@@ -184,5 +184,6 @@ export const quoteFormConfig = {
     "Landscaping & Design",
     "Hardscape",
     "Multiple Services",
+    "Other",
   ],
 };

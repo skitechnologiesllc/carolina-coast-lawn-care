@@ -1,12 +1,19 @@
 import Link from "next/link";
-import { Phone } from "lucide-react";
-import { heroConfig } from "@/config/site";
+import { heroConfig, galleryConfig } from "@/config/site";
 import { EstimateButton } from "@/components/ui";
+import { HeroBackground } from "@/components/HeroBackground";
+
+const HERO_IMAGE_COUNT = 5;
 
 export function Hero() {
+  const heroImages = galleryConfig.images.slice(0, HERO_IMAGE_COUNT);
+
   return (
-    <section className="relative flex min-h-screen items-center bg-[#2d5016]">
-      <div className="absolute inset-0 bg-secondary/70" />
+    <section className="relative flex min-h-screen items-center overflow-hidden">
+      <HeroBackground
+        images={heroImages.map((image) => image.src)}
+        alts={heroImages.map((image) => image.alt)}
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
