@@ -23,40 +23,40 @@ body {
   color: #444444;
 }
 
-/* Hero Ken Burns — subtle zoom + pan (~20s), restarted when a slide becomes active */
+/* Hero Ken Burns — base zoom (~1.25) creates crop room for object-position framing */
 @keyframes hero-kenburns-1 {
   from {
-    transform: scale(1) translate(0%, 0%);
+    transform: scale(1.25) translate(0%, 0%);
   }
   to {
-    transform: scale(1.08) translate(-1.5%, -1%);
+    transform: scale(1.35) translate(-1.2%, -0.8%);
   }
 }
 
 @keyframes hero-kenburns-2 {
   from {
-    transform: scale(1) translate(0%, 0%);
+    transform: scale(1.25) translate(0%, 0%);
   }
   to {
-    transform: scale(1.08) translate(1.5%, -0.75%);
+    transform: scale(1.35) translate(1.2%, -0.6%);
   }
 }
 
 @keyframes hero-kenburns-3 {
   from {
-    transform: scale(1) translate(0%, 0%);
+    transform: scale(1.25) translate(0%, 0%);
   }
   to {
-    transform: scale(1.08) translate(-1%, 1%);
+    transform: scale(1.35) translate(-0.8%, 0.8%);
   }
 }
 
 @keyframes hero-kenburns-4 {
   from {
-    transform: scale(1) translate(0%, 0%);
+    transform: scale(1.25) translate(0%, 0%);
   }
   to {
-    transform: scale(1.08) translate(1.25%, 0.5%);
+    transform: scale(1.35) translate(1%, 0.4%);
   }
 }
 
@@ -74,6 +74,10 @@ body {
 
 .hero-kenburns-4 {
   animation: hero-kenburns-4 20s ease-out forwards;
+}
+
+.hero-slide-frame {
+  transform: scale(1.25);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -94,6 +98,9 @@ body {
   .hero-kenburns-3,
   .hero-kenburns-4 {
     animation: none !important;
-    transform: none !important;
+  }
+
+  .hero-slide-frame {
+    transform: scale(1.25) !important;
   }
 }

@@ -157,12 +157,38 @@ export const galleryConfig = {
   headline: "Our Work",
   subheadline: "Real results from real Horry County properties.",
   images: [
-    { src: "/lawn1.jpeg", alt: "Carolina Coast Lawn Care project 1" },
-    { src: "/lawn2.jpeg", alt: "Carolina Coast Lawn Care project 2" },
-    { src: "/lawn3.jpg", alt: "Carolina Coast Lawn Care project 3" },
-    { src: "/lawn4.jpeg", alt: "Carolina Coast Lawn Care project 4" },
-    { src: "/lawn5.jpeg", alt: "Carolina Coast Lawn Care project 5" },
-    { src: "/lawn6.jpeg", alt: "Carolina Coast Lawn Care project 6" },
+    {
+      src: "/lawn1.jpeg",
+      alt: "Carolina Coast Lawn Care project 1",
+      // Portrait lawn shot — lawn sits in the lower half of the frame
+      objectPosition: "center 55%",
+    },
+    {
+      src: "/lawn2.jpeg",
+      alt: "Carolina Coast Lawn Care project 2",
+      objectPosition: "center 28%",
+    },
+    {
+      src: "/lawn3.jpg",
+      alt: "Carolina Coast Lawn Care project 3",
+      objectPosition: "center 25%",
+    },
+    {
+      src: "/lawn4.jpeg",
+      alt: "Carolina Coast Lawn Care project 4",
+      // Crop sidewalk/driveway at bottom; keep lawn + gravel beds in frame
+      objectPosition: "center 20%",
+    },
+    {
+      src: "/lawn5.jpeg",
+      alt: "Carolina Coast Lawn Care project 5",
+      objectPosition: "center 22%",
+    },
+    {
+      src: "/lawn6.jpeg",
+      alt: "Carolina Coast Lawn Care project 6",
+      objectPosition: "center 25%",
+    },
   ],
 };
 

@@ -13,6 +13,9 @@ export function Hero() {
       <HeroBackground
         images={heroImages.map((image) => image.src)}
         alts={heroImages.map((image) => image.alt)}
+        objectPositions={heroImages.map(
+          (image) => image.objectPosition ?? "center 22%"
+        )}
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">

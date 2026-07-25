@@ -11,12 +11,14 @@ type HeroBackgroundProps = {
   images?: string[];
   videoSrc?: string;
   alts?: string[];
+  objectPositions?: string[];
 };
 
 export function HeroBackground({
   images = [],
   videoSrc,
   alts = [],
+  objectPositions = [],
 }: HeroBackgroundProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [mountedIndices, setMountedIndices] = useState(() => new Set([0]));
@@ -73,6 +75,7 @@ export function HeroBackground({
 
           const isActive = index === activeIndex;
           const kenBurnsClass = `hero-kenburns-${(index % KEN_BURNS_VARIANTS) + 1}`;
+          const objectPosition = objectPositions[index] ?? "center 22%";
 
           return (
             <div
@@ -82,7 +85,7 @@ export function HeroBackground({
               }`}
             >
               <div
-                className={`absolute inset-0 will-change-transform ${
+                className={`hero-slide-frame absolute inset-0 will-change-transform ${
                   isActive ? kenBurnsClass : ""
                 }`}
               >
@@ -93,7 +96,8 @@ export function HeroBackground({
                   priority={index === 0}
                   quality={85}
                   sizes="100vw"
-                  className="object-cover object-[center_40%] sm:object-center"
+                  className="object-cover"
+                  style={{ objectPosition }}
                 />
               </div>
             </div>
