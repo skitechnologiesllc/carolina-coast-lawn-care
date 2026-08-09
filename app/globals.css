@@ -23,63 +23,6 @@ body {
   color: #444444;
 }
 
-/* Hero Ken Burns — base zoom (~1.25) creates crop room for object-position framing */
-@keyframes hero-kenburns-1 {
-  from {
-    transform: scale(1.25) translate(0%, 0%);
-  }
-  to {
-    transform: scale(1.35) translate(-1.2%, -0.8%);
-  }
-}
-
-@keyframes hero-kenburns-2 {
-  from {
-    transform: scale(1.25) translate(0%, 0%);
-  }
-  to {
-    transform: scale(1.35) translate(1.2%, -0.6%);
-  }
-}
-
-@keyframes hero-kenburns-3 {
-  from {
-    transform: scale(1.25) translate(0%, 0%);
-  }
-  to {
-    transform: scale(1.35) translate(-0.8%, 0.8%);
-  }
-}
-
-@keyframes hero-kenburns-4 {
-  from {
-    transform: scale(1.25) translate(0%, 0%);
-  }
-  to {
-    transform: scale(1.35) translate(1%, 0.4%);
-  }
-}
-
-.hero-kenburns-1 {
-  animation: hero-kenburns-1 20s ease-out forwards;
-}
-
-.hero-kenburns-2 {
-  animation: hero-kenburns-2 20s ease-out forwards;
-}
-
-.hero-kenburns-3 {
-  animation: hero-kenburns-3 20s ease-out forwards;
-}
-
-.hero-kenburns-4 {
-  animation: hero-kenburns-4 20s ease-out forwards;
-}
-
-.hero-slide-frame {
-  transform: scale(1.25);
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -91,16 +34,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .hero-kenburns-1,
-  .hero-kenburns-2,
-  .hero-kenburns-3,
-  .hero-kenburns-4 {
-    animation: none !important;
-  }
-
-  .hero-slide-frame {
-    transform: scale(1.25) !important;
   }
 }

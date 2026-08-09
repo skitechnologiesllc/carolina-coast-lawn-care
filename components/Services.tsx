@@ -40,10 +40,10 @@ export function Services() {
             return (
               <div
                 key={service.name}
-                className="flex h-full flex-col rounded-xl bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+                className="flex h-full flex-col rounded-xl border-t-4 border-primary bg-[#f0f7f0] p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
-                  <Icon className="h-6 w-6 text-primary" />
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/15">
+                  <Icon className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-lg font-bold text-heading">{service.name}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-body">

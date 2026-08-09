@@ -13,11 +13,11 @@ export function OurPromise() {
           centered
         />
 
-        <div className="space-y-6">
+        <div className="space-y-12 sm:space-y-16">
           {ourPromiseConfig.promises.map((promise) => (
             <div
               key={promise.number}
-              className="group flex flex-col gap-4 rounded-xl border-l-4 border-primary bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md sm:flex-row sm:items-center sm:gap-8 sm:p-8"
+              className="flex flex-col gap-4 border-l-4 border-primary pl-6 sm:flex-row sm:items-center sm:gap-10 sm:pl-8"
             >
               <div className="shrink-0">
                 <span className="text-5xl font-bold text-primary sm:text-6xl">
@@ -35,9 +35,7 @@ export function OurPromise() {
               </div>
 
               <div className="shrink-0">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                  <Check className="h-6 w-6 text-primary" />
-                </div>
+                <Check className="h-6 w-6 text-primary" />
               </div>
             </div>
           ))}
