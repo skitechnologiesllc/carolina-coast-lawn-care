@@ -23,20 +23,6 @@ body {
   color: #444444;
 }
 
-/* Hero Ken Burns — subtle single-image zoom, no slideshow */
-@keyframes hero-kenburns {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.05);
-  }
-}
-
-.hero-kenburns {
-  animation: hero-kenburns 20s ease-in-out infinite alternate;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -48,10 +34,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .hero-kenburns {
-    animation: none !important;
-    transform: none !important;
   }
 }
