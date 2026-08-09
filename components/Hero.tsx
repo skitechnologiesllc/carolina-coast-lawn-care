@@ -1,21 +1,21 @@
 import Link from "next/link";
-import { heroConfig, galleryConfig } from "@/config/site";
+import { heroConfig } from "@/config/site";
 import { EstimateButton } from "@/components/ui";
 import { HeroBackground } from "@/components/HeroBackground";
 
-const HERO_IMAGE_COUNT = 5;
+const HERO_IMAGE = {
+  src: "/lawn4.jpeg",
+  alt: "Carolina Coast Lawn Care — front yard landscaping with concrete walkway",
+  objectPosition: "center 28%",
+};
 
 export function Hero() {
-  const heroImages = galleryConfig.images.slice(0, HERO_IMAGE_COUNT);
-
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">
       <HeroBackground
-        images={heroImages.map((image) => image.src)}
-        alts={heroImages.map((image) => image.alt)}
-        objectPositions={heroImages.map(
-          (image) => image.objectPosition ?? "center 22%"
-        )}
+        src={HERO_IMAGE.src}
+        alt={HERO_IMAGE.alt}
+        objectPosition={HERO_IMAGE.objectPosition}
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
