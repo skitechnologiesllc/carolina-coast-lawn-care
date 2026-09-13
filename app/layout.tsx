@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  variable: "--font-source-sans",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Carolina Coast Lawn Care | Lawn Care & Landscaping in Horry County, SC",
   description:
-    "Professional lawn care and landscaping in Longs, SC and all of Horry County. Mowing, fertilization, aeration, sod, rock beds, and hardscape. Free estimates.",
+    "Owner-operated lawn care out of Longs, SC. Mowing, fertilization, aeration, sod, rock beds, and hardscape across Horry County. Free estimates.",
 };
 
 export default function RootLayout({
@@ -20,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body
+        className={`${fraunces.variable} ${sourceSans.variable} font-sans antialiased`}
+      >
         {children}
       </body>
     </html>

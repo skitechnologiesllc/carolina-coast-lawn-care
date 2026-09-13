@@ -27,8 +27,8 @@ export function Navbar() {
 
   return (
     <header
-      className={`border-b border-secondary/10 bg-white transition-shadow duration-200 ${
-        scrolled ? "shadow-md" : ""
+      className={`border-b border-border bg-salt transition-shadow duration-200 ${
+        scrolled ? "shadow-sm" : ""
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
@@ -48,7 +48,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-secondary transition-colors hover:text-primary"
+              className="text-sm font-medium text-dock transition-colors hover:text-marsh"
             >
               {link.label}
             </Link>
@@ -58,7 +58,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="rounded-lg p-2 text-secondary lg:hidden"
+          className="rounded-md p-2 text-dock lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
@@ -67,13 +67,13 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-secondary/10 bg-white px-4 py-4 lg:hidden">
+        <div className="border-t border-border bg-salt px-4 py-4 lg:hidden">
           <nav className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-base font-medium text-secondary"
+                className="text-base font-medium text-dock"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}

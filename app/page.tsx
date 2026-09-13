@@ -1,8 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { TopContactBar } from "@/components/TopContactBar";
 import { Hero } from "@/components/Hero";
-import { TrustBar } from "@/components/TrustBar";
-import { OurPromise } from "@/components/OurPromise";
 import { Services } from "@/components/Services";
 import { About } from "@/components/About";
 import { Gallery } from "@/components/Gallery";
@@ -20,8 +18,6 @@ export default function Home() {
       </div>
       <main>
         <Hero />
-        <TrustBar />
-        <OurPromise />
         <Services />
         <About />
         <Gallery />

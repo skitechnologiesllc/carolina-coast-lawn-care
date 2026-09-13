@@ -7,8 +7,7 @@ export const siteConfig = {
   serviceArea: "Serving All of Horry County",
   facebook:
     "https://www.facebook.com/share/1V9EodVEV6/?mibextid=wwXIfr",
-  googleReviewsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Carolina+Coast+Lawn+Care+Longs+SC",
+  googleReviewsUrl: "https://maps.app.goo.gl/fJPFYhKVc4Sv6T4V7",
   estimateAnchor: "#estimate",
 };
 
@@ -20,9 +19,15 @@ export const navLinks = [
 ];
 
 export const heroConfig = {
-  headline: "Horry County's Trusted Lawn Care Professionals.",
+  brand: "Carolina Coast Lawn Care",
+  // Active option A — see chat for B/C alternatives
+  headline: "Precision lawn care for Horry County homes.",
   subheadline:
-    "From weekly mowing to full landscaping installs — we keep your property looking its best year round.",
+    "Dependable mowing, fertilization, and landscaping from a locally owned team based in Longs. Request your free estimate today.",
+  image: {
+    src: "/lawn1.jpeg",
+    alt: "Freshly cut Horry County lawn by Carolina Coast Lawn Care",
+  },
 };
 
 export const trustBarConfig = [
@@ -32,33 +37,8 @@ export const trustBarConfig = [
   { stat: "Residential", label: "& Commercial" },
 ];
 
-export const ourPromiseConfig = {
-  headline: "Our Promise To You",
-  subheadline: "Every yard. Every visit. Every time.",
-  promises: [
-    {
-      number: "01",
-      title: "We Show Up On Time",
-      description:
-        "No no-shows, no excuses — we are there when we say we will be, every single visit.",
-    },
-    {
-      number: "02",
-      title: "We Communicate",
-      description:
-        "You will always know what is happening with your property. Call or text us anytime and get a real person.",
-    },
-    {
-      number: "03",
-      title: "We Stand Behind Our Work",
-      description:
-        "If something is not right, we make it right. Your satisfaction is not optional — it is our standard.",
-    },
-  ],
-};
-
 export const testimonialsConfig = {
-  headline: "What Our Customers Say",
+  headline: "Testimonials",
   reviews: [
     {
       quote:
@@ -90,9 +70,9 @@ export const testimonialsConfig = {
 };
 
 export const servicesConfig = {
-  headline: "What We Do",
+  headline: "Services We Offer",
   subheadline:
-    "Professional lawn care and landscaping services for Horry County homeowners and businesses.",
+    "Mowing, feeding, sod, rock, and hardscape — the work we take on across Horry County.",
   services: [
     {
       name: "Lawn Mowing",
@@ -154,13 +134,12 @@ export const aboutConfig = {
 };
 
 export const galleryConfig = {
-  headline: "Our Work",
-  subheadline: "Real results from real Horry County properties.",
+  headline: "Recent Horry County yards",
+  subheadline: "Fresh cuts, clean edges, and beds we finished this season.",
   images: [
     {
       src: "/lawn1.jpeg",
       alt: "Carolina Coast Lawn Care project 1",
-      // Portrait lawn shot — lawn sits in the lower half of the frame
       objectPosition: "center 55%",
     },
     {
@@ -176,7 +155,6 @@ export const galleryConfig = {
     {
       src: "/lawn4.jpeg",
       alt: "Carolina Coast Lawn Care project 4",
-      // Crop sidewalk/driveway at bottom; keep lawn + gravel beds in frame
       objectPosition: "center 20%",
     },
     {
@@ -193,14 +171,14 @@ export const galleryConfig = {
 };
 
 export const ctaConfig = {
-  headline: "Ready For A Lawn You Can Be Proud Of?",
-  subheadline: "Get your free estimate today — no pressure, no obligation.",
-  buttonText: "Request Your Free Estimate",
+  headline: "Your yard next?",
+  subheadline: "Free estimate. No pressure. Usually back to you within a day.",
+  buttonText: "Request an estimate",
 };
 
 export const quoteFormConfig = {
-  headline: "Get Your Free Estimate",
-  subheadline: "Fill out the form below and we will get back to you within 24 hours.",
+  headline: "Tell us about your yard",
+  subheadline: "A few details is enough — we will follow up within 24 hours.",
   serviceOptions: [
     "Lawn Mowing",
     "Fertilization",

@@ -1,7 +1,6 @@
 import { Quote, Star } from "lucide-react";
 import { GoogleReviewsBadge } from "@/components/GoogleReviewsBadge";
 import { testimonialsConfig } from "@/config/site";
-import { ScrollReveal } from "@/components/ScrollReveal";
 import { Section, SectionHeading } from "@/components/ui";
 
 function TestimonialCard({
@@ -14,7 +13,7 @@ function TestimonialCard({
   source?: string;
 }) {
   return (
-    <div className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-sm">
+    <div className="flex h-full flex-col border-l-4 border-marsh bg-light-secondary/60 p-6">
       <Quote className="mb-4 h-8 w-8 text-primary" />
       <div className="mb-4 flex gap-0.5">
         {Array.from({ length: 5 }).map((_, i) => (
@@ -40,31 +39,29 @@ export function Testimonials() {
   ];
 
   return (
-    <Section id="testimonials" className="bg-white">
-      <ScrollReveal>
-        <SectionHeading headline={testimonialsConfig.headline} centered />
+    <Section id="testimonials" className="bg-salt">
+      <SectionHeading headline={testimonialsConfig.headline} centered />
 
-        <div className="mb-10 flex justify-center">
-          <GoogleReviewsBadge variant="featured" />
-        </div>
+      <div className="mb-10 flex justify-center">
+        <GoogleReviewsBadge variant="featured" />
+      </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {firstRow.map((review) => (
-            <TestimonialCard key={review.author} {...review} />
-          ))}
-          {secondRow.map((review) => (
-            <TestimonialCard key={review.author} {...review} />
-          ))}
-        </div>
+      <div className="grid gap-6 md:grid-cols-2">
+        {firstRow.map((review) => (
+          <TestimonialCard key={review.author} {...review} />
+        ))}
+        {secondRow.map((review) => (
+          <TestimonialCard key={review.author} {...review} />
+        ))}
+      </div>
 
-        {fifth && (
-          <div className="mt-6 flex justify-center">
-            <div className="w-full md:max-w-[calc(50%-0.75rem)]">
-              <TestimonialCard {...fifth} />
-            </div>
+      {fifth && (
+        <div className="mt-6 flex justify-center">
+          <div className="w-full md:max-w-[calc(50%-0.75rem)]">
+            <TestimonialCard {...fifth} />
           </div>
-        )}
-      </ScrollReveal>
+        </div>
+      )}
     </Section>
   );
 }

@@ -13,12 +13,12 @@ export function EstimateButton({
   className = "",
 }: EstimateButtonProps) {
   const base =
-    "inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold transition-colors duration-200";
+    "inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-semibold transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-marsh";
 
   const variants = {
-    primary: "bg-primary text-white hover:bg-primary-hover",
-    outline: "border-2 border-white text-white hover:bg-white/10",
-    white: "bg-white text-secondary hover:bg-light-secondary",
+    primary: "bg-marsh text-salt hover:bg-marsh-hover",
+    outline: "border-2 border-dock text-dock hover:bg-dock/5",
+    white: "bg-salt text-dock hover:bg-light-secondary",
   };
 
   return (
@@ -47,8 +47,8 @@ export function SectionHeading({
   return (
     <div className={`mb-12 ${centered ? "text-center" : ""}`}>
       <h2
-        className={`text-3xl font-bold tracking-tight sm:text-4xl ${
-          light ? "text-white" : "text-heading"
+        className={`font-display text-3xl font-semibold tracking-tight sm:text-4xl ${
+          light ? "text-white" : "text-dock"
         }`}
       >
         {headline}
@@ -74,7 +74,7 @@ type SectionProps = {
 
 export function Section({ id, children, className = "" }: SectionProps) {
   return (
-    <section id={id} className={`py-16 sm:py-20 lg:py-24 ${className}`}>
+    <section id={id} className={`py-12 sm:py-16 lg:py-20 ${className}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>
     </section>
   );

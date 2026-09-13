@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();
@@ -15,11 +13,35 @@ export async function POST(request: Request) {
       );
     }
 
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      // Avoid crashing the route (which returns HTML and breaks the form).
+      // In local/dev without a key, accept the submission so the UI can be tested.
+      if (process.env.NODE_ENV !== "production") {
+        console.info("[contact] No RESEND_API_KEY — accepting submission in development:", {
+          name,
+          phone,
+          email,
+          address,
+          service,
+          message: message || null,
+        });
+        return NextResponse.json({ success: true });
+      }
+
+      console.error("Contact form error: RESEND_API_KEY is not set");
+      return NextResponse.json(
+        { error: "Email service is not configured. Please call us directly." },
+        { status: 500 }
+      );
+    }
+
     const contactEmail =
       process.env.CONTACT_EMAIL || "ccmblawncare@gmail.com";
     const fromEmail =
       process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
 
+    const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: fromEmail,
       to: contactEmail,

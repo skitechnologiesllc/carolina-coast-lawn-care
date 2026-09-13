@@ -1,65 +1,42 @@
-import type { LucideIcon } from "lucide-react";
-import {
-  BrickWall,
-  Flower2,
-  Layers,
-  Leaf,
-  MoreHorizontal,
-  Mountain,
-  Scissors,
-  Sprout,
-} from "lucide-react";
 import { servicesConfig } from "@/config/site";
-import { ScrollReveal } from "@/components/ScrollReveal";
-import { EstimateButton, Section, SectionHeading } from "@/components/ui";
+import { EstimateButton, SectionHeading } from "@/components/ui";
 
-const iconMap: Record<string, LucideIcon> = {
-  "Lawn Mowing": Scissors,
-  Fertilization: Sprout,
-  Aeration: Leaf,
-  "Sod Installation": Layers,
-  "Rock Bed Installation": Mountain,
-  "Landscaping & Design": Flower2,
-  Hardscape: BrickWall,
-  More: MoreHorizontal,
-};
-
+/**
+ * Plan: services as a type-led list / 2-column text rail —
+ * not identical icon cards.
+ */
 export function Services() {
   return (
-    <Section id="services" className="bg-light-secondary">
-      <ScrollReveal>
+    <section
+      id="services"
+      className="bg-light-secondary py-12 sm:py-16 lg:py-20"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           headline={servicesConfig.headline}
           subheadline={servicesConfig.subheadline}
           centered
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {servicesConfig.services.map((service) => {
-            const Icon = iconMap[service.name];
-            return (
-              <div
-                key={service.name}
-                className="flex h-full flex-col rounded-xl border-t-4 border-primary bg-[#f0f7f0] p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/15">
-                  <Icon className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-lg font-bold text-heading">{service.name}</h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-body">
-                  {service.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+        <ul className="grid gap-x-16 sm:grid-cols-2">
+          {servicesConfig.services.map((service) => (
+            <li key={service.name} className="border-t border-border py-7">
+              <h3 className="font-display text-xl font-semibold text-dock">
+                {service.name}
+              </h3>
+              <p className="mt-2 max-w-md text-base leading-relaxed text-body">
+                {service.description}
+              </p>
+            </li>
+          ))}
+        </ul>
 
-        <div className="mt-12 text-center">
+        <div className="mt-10">
           <EstimateButton className="px-8 py-4 text-base">
-            Get Your Free Estimate
+            Request an estimate
           </EstimateButton>
         </div>
-      </ScrollReveal>
-    </Section>
+      </div>
+    </section>
   );
 }

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { quoteFormConfig } from "@/config/site";
-import { ScrollReveal } from "@/components/ScrollReveal";
 import { Section, SectionHeading } from "@/components/ui";
 
 type FormState = {
@@ -50,8 +49,17 @@ export function QuoteForm() {
         body: JSON.stringify(form),
       });
 
+      const raw = await response.text();
+      let data: { error?: string; success?: boolean } = {};
+      try {
+        data = raw ? JSON.parse(raw) : {};
+      } catch {
+        throw new Error(
+          "Something went wrong submitting the form. Please call us directly."
+        );
+      }
+
       if (!response.ok) {
-        const data = await response.json();
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
 
@@ -66,18 +74,17 @@ export function QuoteForm() {
   };
 
   return (
-    <Section id="estimate" className="bg-white">
-      <ScrollReveal>
-        <SectionHeading
-          headline={quoteFormConfig.headline}
-          subheadline={quoteFormConfig.subheadline}
-          centered
-        />
+    <Section id="estimate" className="bg-salt">
+      <SectionHeading
+        headline={quoteFormConfig.headline}
+        subheadline={quoteFormConfig.subheadline}
+        centered
+      />
 
-        <form
-          onSubmit={handleSubmit}
-          className="mx-auto max-w-2xl space-y-5"
-        >
+      <form
+        onSubmit={handleSubmit}
+        className="mx-auto max-w-2xl space-y-5"
+      >
           <div className="grid gap-5 sm:grid-cols-2">
             <div>
               <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-heading">
@@ -150,7 +157,7 @@ export function QuoteForm() {
               required
               value={form.service}
               onChange={handleChange}
-              className="w-full rounded-lg border border-border bg-white px-4 py-3 text-secondary outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-lg border border-border bg-salt px-4 py-3 text-secondary outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               <option value="" disabled>
                 Select a service
@@ -197,7 +204,6 @@ export function QuoteForm() {
             </p>
           )}
         </form>
-      </ScrollReveal>
     </Section>
   );
 }
