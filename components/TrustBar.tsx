@@ -1,21 +1,37 @@
+import Link from "next/link";
 import { trustBarConfig } from "@/config/site";
 
 export function TrustBar() {
   return (
-    <section className="bg-secondary py-8 sm:py-10">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-4">
-          {trustBarConfig.map((item) => (
-            <div key={item.stat} className="text-center">
-              <p className="text-base font-bold tracking-tight text-white sm:text-lg">
-                {item.stat}
-              </p>
-              <p className="mt-0.5 text-xs text-white/70 sm:text-sm">
-                {item.label}
-              </p>
+    <section aria-label="Trust signals" className="bg-forest">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-ivory/15 sm:grid-cols-4 sm:divide-y-0">
+        {trustBarConfig.map((item) => {
+          const content = (
+            <span className="flex h-full items-center justify-center px-3 py-3.5 text-center text-sm font-semibold tracking-wide text-ivory sm:py-4 sm:text-[0.9rem]">
+              {item.label}
+            </span>
+          );
+
+          if (item.href) {
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+                className="transition-colors hover:bg-forest-hover"
+              >
+                {content}
+              </Link>
+            );
+          }
+
+          return (
+            <div key={item.label} className="bg-forest">
+              {content}
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );

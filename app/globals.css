@@ -1,36 +1,43 @@
 @import "tailwindcss";
 
 /*
-  Carolina Coast Lawn Care — design tokens
+  Premium local service palette
   -----------------------------------------
-  Marsh Green   #2F5D3A  — primary / CTAs (sitewide)
-  Hero Green    #167A35  — deeper, more saturated accent (hero only)
-  Salt Flat     #E6D9C4  — warm sandy page ground (not near-white)
-  Dock Charcoal #1C1F1A  — headlines & strong text
-  Live Oak      #5A6B4A  — secondary green
-  Sky Wash      #D6E4EC  — cool section breath
-  Cypress Bark  #8B7355  — sparse accent
+  Forest     #1B4332  — primary / CTAs
+  Forest deep #12291F — hover / dense accents
+  Charcoal   #1A1C19  — headlines, footer, overlays
+  Warm Ivory #F4F0E8  — page ground
+  Stone      #C4B8A5  — borders / quiet rules
+  Moss       #3D5A45  — secondary green
+  Cypress    #8B7355  — sparse natural accent
 */
 
 @theme {
-  --color-marsh: #2f5d3a;
-  --color-marsh-hover: #254a2e;
-  --color-live-oak: #5a6b4a;
-  --color-salt: #e6d9c4;
-  --color-sky: #d6e4ec;
-  --color-dock: #1c1f1a;
+  --color-forest: #1b4332;
+  --color-forest-hover: #12291f;
+  --color-moss: #3d5a45;
+  --color-ivory: #f4f0e8;
+  --color-ivory-deep: #ebe4d8;
+  --color-charcoal: #1a1c19;
+  --color-stone: #c4b8a5;
   --color-cypress: #8b7355;
 
-  /* Aliases used by existing components during the redesign */
-  --color-primary: #2f5d3a;
-  --color-primary-hover: #254a2e;
-  --color-secondary: #1c1f1a;
-  --color-light: #e6d9c4;
-  --color-light-secondary: #d9cbb3;
-  --color-heading: #1c1f1a;
-  --color-body: #3d4238;
-  --color-muted: #6b7164;
-  --color-border: #c9bba5;
+  /* Backward-compatible aliases used across components */
+  --color-marsh: #1b4332;
+  --color-marsh-hover: #12291f;
+  --color-live-oak: #3d5a45;
+  --color-salt: #f4f0e8;
+  --color-sky: #e8eef0;
+  --color-dock: #1a1c19;
+  --color-primary: #1b4332;
+  --color-primary-hover: #12291f;
+  --color-secondary: #1a1c19;
+  --color-light: #f4f0e8;
+  --color-light-secondary: #ebe4d8;
+  --color-heading: #1a1c19;
+  --color-body: #2c322c;
+  --color-muted: #555b52;
+  --color-border: #c4b8a5;
 
   --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
@@ -41,51 +48,55 @@ html {
 }
 
 body {
-  /* Salt Flat — warm sand, deliberately not white */
-  background-color: #e6d9c4;
-  background-image:
-    radial-gradient(ellipse 120% 80% at 10% -20%, rgba(214, 228, 236, 0.35), transparent 55%),
-    radial-gradient(ellipse 90% 60% at 100% 0%, rgba(139, 115, 85, 0.08), transparent 50%);
-  color: #3d4238;
+  background-color: #f4f0e8;
+  color: #2c322c;
   font-family: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+body.has-mobile-cta {
+  padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+}
+
+/* Sticky CTA shows below the lg desktop nav breakpoint */
+@media (min-width: 1024px) {
+  body.has-mobile-cta {
+    padding-bottom: 0;
+  }
 }
 
 .font-display {
   font-family: var(--font-fraunces), ui-serif, Georgia, "Times New Roman", serif;
 }
 
-/*
-  Hero — full-bleed photo with left-weighted gradient for type.
-*/
+/* Full-bleed hero */
 .hero-editorial {
-  --hero-green: #167a35;
-  --hero-green-hover: #12662c;
+  --hero-green: #1b4332;
+  --hero-green-hover: #12291f;
   position: relative;
   display: block;
-  min-height: 100svh;
+  min-height: min(92svh, 780px);
   overflow: hidden;
-  background-color: #1c1f1a;
+  background-color: #1a1c19;
 }
 
 .hero-editorial__photo {
   position: absolute;
   inset: 0;
-  width: 100%;
-  min-height: 100%;
   overflow: hidden;
 }
 
 .hero-editorial__photo-img {
   will-change: transform;
-  animation: hero-ken-burns 28s ease-in-out alternate infinite;
+  animation: hero-ken-burns 32s ease-in-out alternate infinite;
 }
 
 @keyframes hero-ken-burns {
   from {
-    transform: scale(1.04) translate(0%, 0%);
+    transform: scale(1.03) translate(0%, 0%);
   }
   to {
-    transform: scale(1.12) translate(-2%, -1.5%);
+    transform: scale(1.1) translate(-1.5%, -1%);
   }
 }
 
@@ -94,13 +105,29 @@ body {
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  /* Soft base wash — keeps the lawn bright on the right */
   background: linear-gradient(
-    90deg,
-    rgba(28, 31, 26, 0.88) 0%,
-    rgba(28, 31, 26, 0.72) 32%,
-    rgba(28, 31, 26, 0.35) 58%,
-    rgba(28, 31, 26, 0.08) 78%,
-    transparent 100%
+    105deg,
+    rgba(26, 28, 25, 0.55) 0%,
+    rgba(26, 28, 25, 0.28) 38%,
+    rgba(26, 28, 25, 0.1) 62%,
+    rgba(26, 28, 25, 0.02) 100%
+  );
+}
+
+/* Localized scrim behind headline/CTAs only — does not darken the full photo */
+.hero-editorial__copy-scrim {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(14, 16, 14, 0.92) 0%,
+    rgba(14, 16, 14, 0.82) 22%,
+    rgba(14, 16, 14, 0.5) 40%,
+    rgba(14, 16, 14, 0.14) 56%,
+    rgba(14, 16, 14, 0) 70%
   );
 }
 
@@ -109,8 +136,7 @@ body {
   z-index: 2;
   display: flex;
   align-items: center;
-  min-height: 100svh;
-  background: transparent;
+  min-height: min(92svh, 780px);
 }
 
 .hero-editorial__cta {
@@ -121,27 +147,39 @@ body {
   background-color: var(--hero-green-hover);
 }
 
-.hero-editorial__cta:focus-visible {
-  outline-color: var(--hero-green);
-}
-
-.hero-editorial__link:hover {
-  color: #fff;
-}
-
 @media (max-width: 767px) {
+  .hero-editorial {
+    min-height: 88svh;
+  }
+
+  .hero-editorial__copy {
+    min-height: 88svh;
+    align-items: flex-end;
+    padding-bottom: 1.25rem;
+  }
+
   .hero-editorial__overlay {
     background: linear-gradient(
       180deg,
-      rgba(28, 31, 26, 0.55) 0%,
-      rgba(28, 31, 26, 0.75) 45%,
-      rgba(28, 31, 26, 0.88) 100%
+      rgba(26, 28, 25, 0.12) 0%,
+      rgba(26, 28, 25, 0.28) 40%,
+      rgba(26, 28, 25, 0.45) 100%
+    );
+  }
+
+  .hero-editorial__copy-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(18, 20, 18, 0) 0%,
+      rgba(18, 20, 18, 0.45) 38%,
+      rgba(18, 20, 18, 0.88) 72%,
+      rgba(18, 20, 18, 0.94) 100%
     );
   }
 }
 
 :focus-visible {
-  outline: 2px solid #2f5d3a; /* Marsh Green */
+  outline: 2px solid #1b4332;
   outline-offset: 3px;
 }
 

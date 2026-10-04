@@ -2,10 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { heroConfig, siteConfig } from "@/config/site";
 
-/**
- * Full-bleed photo hero with left-weighted gradient overlay for type.
- * No split panels / vertical divider.
- */
 export function Hero() {
   return (
     <section className="hero-editorial" aria-label="Introduction">
@@ -15,7 +11,7 @@ export function Hero() {
           alt={heroConfig.image.alt}
           fill
           priority
-          quality={90}
+          quality={85}
           sizes="100vw"
           className="hero-editorial__photo-img object-cover object-[center_55%]"
         />
@@ -24,56 +20,40 @@ export function Hero() {
       <div className="hero-editorial__overlay" aria-hidden="true" />
 
       <div className="hero-editorial__copy">
-        <div className="w-full max-w-7xl px-6 py-16 sm:px-10 lg:px-14 xl:px-16">
-          <p className="font-display text-xl font-semibold text-salt sm:text-2xl">
+        <div className="hero-editorial__copy-scrim" aria-hidden="true" />
+        <div className="relative z-10 w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+          <p className="font-display text-base font-semibold tracking-wide text-ivory sm:text-lg">
             {heroConfig.brand}
           </p>
 
-          <h1 className="mt-5 max-w-xl font-display text-[1.85rem] font-semibold leading-[1.18] tracking-tight text-salt sm:text-4xl lg:text-[2.75rem]">
+          <h1 className="mt-3 max-w-xl font-display text-[1.85rem] font-semibold leading-[1.12] tracking-tight text-ivory sm:mt-4 sm:text-4xl lg:max-w-2xl lg:text-[2.65rem]">
             {heroConfig.headline}
           </h1>
 
-          <p className="mt-5 max-w-md text-base leading-relaxed text-salt/85 sm:text-lg">
+          <p className="mt-3 max-w-md text-[0.95rem] leading-relaxed text-ivory/90 sm:mt-4 sm:text-base lg:text-lg">
             {heroConfig.subheadline}
           </p>
 
-          <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-            <Link
-              href={siteConfig.estimateAnchor}
-              className="hero-editorial__cta inline-flex items-center justify-center px-7 py-3.5 text-base font-semibold text-salt transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
-            >
-              Get a free estimate
-            </Link>
+          <div className="mt-6 flex flex-col gap-2.5 sm:mt-7 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
             <a
               href={siteConfig.phoneHref}
-              className="text-sm font-medium text-salt/80 underline-offset-4 transition-colors hover:text-salt hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--hero-green)]"
+              className="inline-flex items-center justify-center bg-ivory px-5 py-3 text-sm font-semibold text-charcoal transition-colors hover:bg-ivory-deep sm:px-6 sm:py-3.5"
             >
-              Or call {siteConfig.phone}
+              Call {siteConfig.phone}
             </a>
-          </div>
-
-          <p className="mt-10 max-w-xl border-t border-salt/25 pt-5 text-sm text-salt/70">
-            Licensed &amp; insured
-            <span className="mx-2 text-salt/35" aria-hidden="true">
-              ·
-            </span>
-            Free estimates
-            <span className="mx-2 text-salt/35" aria-hidden="true">
-              ·
-            </span>
-            <Link
-              href={siteConfig.googleReviewsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-editorial__link text-salt/80 underline-offset-2 transition-colors hover:text-salt hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--hero-green)]"
+            <a
+              href={siteConfig.smsHref}
+              className="inline-flex items-center justify-center border border-ivory/50 px-5 py-3 text-sm font-semibold text-ivory transition-colors hover:border-ivory hover:bg-ivory/10 sm:px-6 sm:py-3.5"
             >
-              5.0 on Google
+              Text us
+            </a>
+            <Link
+              href={siteConfig.estimateHash}
+              className="hero-editorial__cta inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-ivory transition-colors sm:px-6 sm:py-3.5"
+            >
+              Get Free Estimate
             </Link>
-            <span className="mx-2 text-salt/35" aria-hidden="true">
-              ·
-            </span>
-            Longs &amp; all of Horry County
-          </p>
+          </div>
         </div>
       </div>
     </section>

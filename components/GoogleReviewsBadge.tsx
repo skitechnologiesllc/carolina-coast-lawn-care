@@ -4,11 +4,7 @@ import { siteConfig } from "@/config/site";
 
 function GoogleIcon({ className = "h-6 w-6" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-      className={`shrink-0 ${className}`}
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={`shrink-0 ${className}`}>
       <path
         fill="#4285F4"
         d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -33,7 +29,9 @@ type GoogleReviewsBadgeProps = {
   variant?: "compact" | "featured";
 };
 
-export function GoogleReviewsBadge({ variant = "compact" }: GoogleReviewsBadgeProps) {
+export function GoogleReviewsBadge({
+  variant = "compact",
+}: GoogleReviewsBadgeProps) {
   const isFeatured = variant === "featured";
 
   return (
@@ -41,10 +39,8 @@ export function GoogleReviewsBadge({ variant = "compact" }: GoogleReviewsBadgePr
       href={siteConfig.googleReviewsUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-3 rounded-xl border border-border bg-white shadow-sm transition-shadow hover:shadow-md ${
-        isFeatured
-          ? "mx-auto px-6 py-4"
-          : "px-3 py-2"
+      className={`group inline-flex items-center gap-3 border border-ivory/25 bg-ivory text-charcoal shadow-sm transition-all hover:border-forest/40 hover:bg-ivory-deep hover:shadow-md ${
+        isFeatured ? "px-5 py-3.5" : "px-3 py-2"
       }`}
       aria-label="View Carolina Coast Lawn Care on Google Reviews"
     >
@@ -61,20 +57,16 @@ export function GoogleReviewsBadge({ variant = "compact" }: GoogleReviewsBadgePr
               />
             ))}
           </div>
-          <span
-            className={`font-bold text-heading ${
-              isFeatured ? "text-xl" : "text-sm"
-            }`}
-          >
+          <span className={`font-bold ${isFeatured ? "text-xl" : "text-sm"}`}>
             5.0
           </span>
         </div>
         <span
-          className={`leading-tight text-muted ${
-            isFeatured ? "text-sm" : "text-[11px]"
+          className={`leading-tight text-muted transition-colors group-hover:text-forest ${
+            isFeatured ? "text-sm font-medium" : "text-[11px]"
           }`}
         >
-          Google Reviews
+          Read Google reviews →
         </span>
       </div>
     </Link>

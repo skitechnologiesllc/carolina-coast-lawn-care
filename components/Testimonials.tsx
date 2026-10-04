@@ -1,67 +1,50 @@
-import { Quote, Star } from "lucide-react";
 import { GoogleReviewsBadge } from "@/components/GoogleReviewsBadge";
 import { testimonialsConfig } from "@/config/site";
 import { Section, SectionHeading } from "@/components/ui";
 
-function TestimonialCard({
-  quote,
-  author,
-  source,
-}: {
-  quote: string;
-  author: string;
-  source?: string;
-}) {
-  return (
-    <div className="flex h-full flex-col border-l-4 border-marsh bg-light-secondary/60 p-6">
-      <Quote className="mb-4 h-8 w-8 text-primary" />
-      <div className="mb-4 flex gap-0.5">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-        ))}
-      </div>
-      <p className="flex-1 text-sm leading-relaxed text-body">&ldquo;{quote}&rdquo;</p>
-      <p className="mt-4 text-sm font-semibold text-heading">
-        — {author}
-        {source && (
-          <span className="font-normal text-muted">, {source}</span>
-        )}
-      </p>
-    </div>
-  );
-}
-
 export function Testimonials() {
-  const [firstRow, secondRow, fifth] = [
-    testimonialsConfig.reviews.slice(0, 2),
-    testimonialsConfig.reviews.slice(2, 4),
-    testimonialsConfig.reviews[4],
-  ];
+  const [featured, ...rest] = testimonialsConfig.reviews;
+  const secondary = rest;
 
   return (
-    <Section id="testimonials" className="bg-salt">
-      <SectionHeading headline={testimonialsConfig.headline} centered />
-
-      <div className="mb-10 flex justify-center">
-        <GoogleReviewsBadge variant="featured" />
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2">
-        {firstRow.map((review) => (
-          <TestimonialCard key={review.author} {...review} />
-        ))}
-        {secondRow.map((review) => (
-          <TestimonialCard key={review.author} {...review} />
-        ))}
-      </div>
-
-      {fifth && (
-        <div className="mt-6 flex justify-center">
-          <div className="w-full md:max-w-[calc(50%-0.75rem)]">
-            <TestimonialCard {...fifth} />
-          </div>
+    <Section id="testimonials" className="bg-charcoal">
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <SectionHeading
+          eyebrow="Google reviews"
+          headline={testimonialsConfig.headline}
+          subheadline={testimonialsConfig.subheadline}
+          light
+          compact
+        />
+        <div className="shrink-0 sm:mb-8">
+          <GoogleReviewsBadge variant="featured" />
         </div>
-      )}
+      </div>
+
+      <blockquote className="mt-2 max-w-3xl border-l-2 border-forest pl-5 sm:pl-6">
+        <p className="font-display text-lg leading-relaxed text-ivory sm:text-xl lg:text-[1.65rem]">
+          “{featured.quote}”
+        </p>
+        <footer className="mt-4 text-sm font-semibold text-ivory/80">
+          — {featured.author}
+          {featured.source && (
+            <span className="font-normal text-ivory/50"> · {featured.source}</span>
+          )}
+        </footer>
+      </blockquote>
+
+      <ul className="mt-8 grid gap-px bg-ivory/10 sm:grid-cols-3">
+        {secondary.map((review) => (
+          <li key={review.author} className="bg-charcoal px-0 py-5 sm:px-5 sm:py-6">
+            <p className="text-sm leading-relaxed text-ivory/80">
+              “{review.quote}”
+            </p>
+            <p className="mt-3 text-sm font-semibold text-ivory">
+              — {review.author}
+            </p>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }
