@@ -35,7 +35,10 @@ export function Testimonials() {
 
       <ul className="mt-8 grid gap-px bg-ivory/10 sm:grid-cols-3">
         {secondary.map((review) => (
-          <li key={review.author} className="bg-charcoal px-0 py-5 sm:px-5 sm:py-6">
+          <li
+            key={review.author}
+            className="bg-charcoal px-0 py-5 sm:px-5 sm:py-6 sm:last:nth-[3n+1]:col-span-3 sm:last:nth-[3n+2]:col-span-2"
+          >
             <p className="text-sm leading-relaxed text-ivory/80">
               “{review.quote}”
             </p>
