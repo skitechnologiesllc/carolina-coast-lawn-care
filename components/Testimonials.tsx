@@ -1,70 +1,55 @@
-import { Quote, Star } from "lucide-react";
 import { GoogleReviewsBadge } from "@/components/GoogleReviewsBadge";
 import { testimonialsConfig } from "@/config/site";
-import { ScrollReveal } from "@/components/ScrollReveal";
-import { Section, SectionHeading } from "@/components/ui";
-
-function TestimonialCard({
-  quote,
-  author,
-  source,
-}: {
-  quote: string;
-  author: string;
-  source?: string;
-}) {
-  return (
-    <div className="flex h-full flex-col rounded-2xl border border-border bg-white p-6 shadow-sm">
-      <Quote className="mb-4 h-8 w-8 text-primary" />
-      <div className="mb-4 flex gap-0.5">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="h-4 w-4 fill-primary text-primary" />
-        ))}
-      </div>
-      <p className="flex-1 text-sm leading-relaxed text-body">&ldquo;{quote}&rdquo;</p>
-      <p className="mt-4 text-sm font-semibold text-heading">
-        — {author}
-        {source && (
-          <span className="font-normal text-muted">, {source}</span>
-        )}
-      </p>
-    </div>
-  );
-}
+import { Section } from "@/components/ui";
 
 export function Testimonials() {
-  const [firstRow, secondRow, fifth] = [
-    testimonialsConfig.reviews.slice(0, 2),
-    testimonialsConfig.reviews.slice(2, 4),
-    testimonialsConfig.reviews[4],
-  ];
+  const [featured, ...rest] = testimonialsConfig.reviews;
 
   return (
-    <Section id="testimonials" className="bg-white">
-      <ScrollReveal>
-        <SectionHeading headline={testimonialsConfig.headline} centered />
-
-        <div className="mb-10 flex justify-center">
-          <GoogleReviewsBadge variant="featured" />
+    <Section id="testimonials" className="bg-ivory">
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-forest">
+            Google reviews
+          </p>
+          <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-charcoal sm:text-4xl">
+            {testimonialsConfig.headline}
+          </h2>
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-body">
+            {testimonialsConfig.subheadline}
+          </p>
         </div>
+        <GoogleReviewsBadge variant="featured" />
+      </div>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {firstRow.map((review) => (
-            <TestimonialCard key={review.author} {...review} />
-          ))}
-          {secondRow.map((review) => (
-            <TestimonialCard key={review.author} {...review} />
-          ))}
-        </div>
+      <div className="mt-10 grid gap-5 lg:grid-cols-12 lg:gap-6">
+        <blockquote className="border border-stone/80 bg-ivory-deep px-6 py-8 sm:px-8 sm:py-10 lg:col-span-5">
+          <p className="font-display text-5xl leading-none text-forest/30" aria-hidden="true">
+            “
+          </p>
+          <p className="mt-2 font-display text-xl leading-relaxed text-charcoal sm:text-2xl">
+            {featured.quote}
+          </p>
+          <footer className="mt-6 text-sm font-semibold text-charcoal">
+            {featured.author}
+            {featured.source && (
+              <span className="mt-1 block font-normal text-muted">{featured.source}</span>
+            )}
+          </footer>
+        </blockquote>
 
-        {fifth && (
-          <div className="mt-6 flex justify-center">
-            <div className="w-full md:max-w-[calc(50%-0.75rem)]">
-              <TestimonialCard {...fifth} />
-            </div>
-          </div>
-        )}
-      </ScrollReveal>
+        <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          {rest.map((review) => (
+            <li key={review.author} className="border border-stone/70 bg-ivory px-5 py-5">
+              <p className="font-display text-2xl leading-none text-forest/25" aria-hidden="true">
+                “
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-body">{review.quote}</p>
+              <p className="mt-4 text-sm font-semibold text-charcoal">{review.author}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </Section>
   );
 }

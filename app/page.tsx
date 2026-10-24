@@ -2,11 +2,13 @@ import { Navbar } from "@/components/Navbar";
 import { TopContactBar } from "@/components/TopContactBar";
 import { Hero } from "@/components/Hero";
 import { TrustBar } from "@/components/TrustBar";
-import { OurPromise } from "@/components/OurPromise";
 import { Services } from "@/components/Services";
-import { About } from "@/components/About";
 import { Gallery } from "@/components/Gallery";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { Testimonials } from "@/components/Testimonials";
+import { About } from "@/components/About";
+import { ServiceArea } from "@/components/ServiceArea";
+import { FAQ } from "@/components/FAQ";
 import { CTA } from "@/components/CTA";
 import { QuoteForm } from "@/components/QuoteForm";
 import { Footer } from "@/components/Footer";
@@ -21,11 +23,13 @@ export default function Home() {
       <main>
         <Hero />
         <TrustBar />
-        <OurPromise />
         <Services />
-        <About />
         <Gallery />
+        <WhyChooseUs />
         <Testimonials />
+        <About />
+        <ServiceArea />
+        <FAQ />
         <CTA />
         <QuoteForm />
       </main>

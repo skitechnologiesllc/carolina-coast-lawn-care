@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { quoteFormConfig } from "@/config/site";
-import { ScrollReveal } from "@/components/ScrollReveal";
-import { Section, SectionHeading } from "@/components/ui";
+import { quoteFormConfig, siteConfig } from "@/config/site";
+import { Section } from "@/components/ui";
 
 type FormState = {
   name: string;
@@ -22,6 +21,9 @@ const initialForm: FormState = {
   service: "",
   message: "",
 };
+
+const fieldClass =
+  "h-12 w-full border border-stone/90 bg-ivory px-4 text-base text-charcoal outline-none transition-colors hover:border-forest/50 focus:border-forest focus:ring-2 focus:ring-forest/15";
 
 export function QuoteForm() {
   const [form, setForm] = useState<FormState>(initialForm);
@@ -50,8 +52,17 @@ export function QuoteForm() {
         body: JSON.stringify(form),
       });
 
+      const raw = await response.text();
+      let data: { error?: string; success?: boolean } = {};
+      try {
+        data = raw ? JSON.parse(raw) : {};
+      } catch {
+        throw new Error(
+          "Something went wrong submitting the form. Please call us directly."
+        );
+      }
+
       if (!response.ok) {
-        const data = await response.json();
         throw new Error(data.error || "Something went wrong. Please try again.");
       }
 
@@ -66,83 +77,144 @@ export function QuoteForm() {
   };
 
   return (
-    <Section id="estimate" className="bg-white">
-      <ScrollReveal>
-        <SectionHeading
-          headline={quoteFormConfig.headline}
-          subheadline={quoteFormConfig.subheadline}
-          centered
-        />
+    <Section id="estimate" className="bg-ivory">
+      <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">
+        <aside className="lg:sticky lg:top-28 lg:col-span-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-forest">
+            Free estimate
+          </p>
+          <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-charcoal sm:text-4xl">
+            {quoteFormConfig.headline}
+          </h2>
+          <p className="mt-4 max-w-md text-base leading-relaxed text-body">
+            {quoteFormConfig.subheadline}
+          </p>
+
+          <ol className="mt-7 space-y-5">
+            <li>
+              <p className="font-display text-sm font-semibold tracking-[0.14em] text-forest">01</p>
+              <p className="mt-1 font-display text-lg font-semibold text-charcoal">
+                Tell us about your property
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-body">
+                Share the service you need and a few details about your property.
+              </p>
+            </li>
+            <li>
+              <p className="font-display text-sm font-semibold tracking-[0.14em] text-forest">02</p>
+              <p className="mt-1 font-display text-lg font-semibold text-charcoal">
+                Receive your estimate
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-body">
+                We&apos;ll review your request and follow up with the next steps.
+              </p>
+            </li>
+            <li>
+              <p className="font-display text-sm font-semibold tracking-[0.14em] text-forest">03</p>
+              <p className="mt-1 font-display text-lg font-semibold text-charcoal">
+                Schedule your service
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-body">
+                Choose a convenient time to move forward.
+              </p>
+            </li>
+          </ol>
+
+          <ul className="mt-7 space-y-3 border-y border-stone/80 py-5 text-sm text-charcoal">
+            <li>
+              <a
+                href={siteConfig.phoneHref}
+                className="font-semibold underline-offset-2 hover:text-forest hover:underline"
+              >
+                Call {siteConfig.phone}
+              </a>
+              <span aria-hidden="true"> · </span>
+              <a
+                href={siteConfig.smsHref}
+                className="font-semibold underline-offset-2 hover:text-forest hover:underline"
+              >
+                Text us
+              </a>
+            </li>
+            <li>Licensed &amp; insured</li>
+            <li>Serving Longs &amp; Horry County</li>
+          </ul>
+
+          <p className="mt-5 text-sm leading-relaxed text-muted">No obligation to book.</p>
+        </aside>
 
         <form
           onSubmit={handleSubmit}
-          className="mx-auto max-w-2xl space-y-5"
+          className="space-y-4 border border-stone/80 bg-ivory-deep p-5 sm:p-8 lg:col-span-8"
         >
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-heading">
-                Full Name
+              <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-charcoal">
+                Full name
               </label>
               <input
                 id="name"
                 name="name"
                 type="text"
                 required
+                autoComplete="name"
                 value={form.name}
                 onChange={handleChange}
-                className="w-full rounded-lg border border-border px-4 py-3 text-secondary outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+                className={fieldClass}
               />
             </div>
-
             <div>
-              <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-heading">
-                Phone Number
+              <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-charcoal">
+                Phone
               </label>
               <input
                 id="phone"
                 name="phone"
                 type="tel"
                 required
+                autoComplete="tel"
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full rounded-lg border border-border px-4 py-3 text-secondary outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+                className={fieldClass}
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-heading">
-              Email Address
+            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-charcoal">
+              Email
             </label>
             <input
               id="email"
               name="email"
               type="email"
               required
+              autoComplete="email"
               value={form.email}
               onChange={handleChange}
-              className="w-full rounded-lg border border-border px-4 py-3 text-secondary outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className={fieldClass}
             />
           </div>
 
           <div>
-            <label htmlFor="address" className="mb-1.5 block text-sm font-medium text-heading">
-              Service Address
+            <label htmlFor="address" className="mb-1.5 block text-sm font-medium text-charcoal">
+              Service address
             </label>
             <input
               id="address"
               name="address"
               type="text"
               required
+              autoComplete="street-address"
               value={form.address}
               onChange={handleChange}
-              className="w-full rounded-lg border border-border px-4 py-3 text-secondary outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className={fieldClass}
             />
           </div>
 
           <div>
-            <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-heading">
-              Service Needed
+            <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-charcoal">
+              Service needed
             </label>
             <select
               id="service"
@@ -150,7 +222,7 @@ export function QuoteForm() {
               required
               value={form.service}
               onChange={handleChange}
-              className="w-full rounded-lg border border-border bg-white px-4 py-3 text-secondary outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className={fieldClass}
             >
               <option value="" disabled>
                 Select a service
@@ -164,8 +236,8 @@ export function QuoteForm() {
           </div>
 
           <div>
-            <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-heading">
-              Tell Us More
+            <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-charcoal">
+              Anything else we should know?
             </label>
             <textarea
               id="message"
@@ -173,31 +245,31 @@ export function QuoteForm() {
               rows={4}
               value={form.message}
               onChange={handleChange}
-              className="w-full resize-none rounded-lg border border-border px-4 py-3 text-secondary outline-none transition-colors focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full border border-stone/90 bg-ivory px-4 py-3 text-base text-charcoal outline-none transition-colors hover:border-forest/50 focus:border-forest focus:ring-2 focus:ring-forest/15"
             />
           </div>
 
           <button
             type="submit"
             disabled={status === "loading"}
-            className="w-full rounded-lg bg-primary px-6 py-4 text-base font-semibold text-white transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-60"
+            className="h-12 w-full bg-forest px-6 text-base font-semibold text-ivory transition-colors hover:bg-forest-hover disabled:cursor-not-allowed disabled:opacity-60"
           >
-            {status === "loading" ? "Sending..." : "Send My Request"}
+            {status === "loading" ? "Sending..." : "Request free estimate"}
           </button>
 
           {status === "success" && (
-            <p className="text-center text-sm font-medium text-primary">
-              Thank you! We will get back to you within 24 hours.
+            <p className="border border-forest/30 bg-ivory px-4 py-3 text-sm font-medium text-forest" role="status">
+              Thank you. We’ll follow up — usually within one business day.
             </p>
           )}
 
           {status === "error" && (
-            <p className="text-center text-sm font-medium text-red-600">
+            <p className="border border-red-300 bg-ivory px-4 py-3 text-sm font-medium text-red-800" role="alert">
               {errorMessage}
             </p>
           )}
         </form>
-      </ScrollReveal>
+      </div>
     </Section>
   );
 }
