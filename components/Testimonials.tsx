@@ -1,53 +1,55 @@
 import { GoogleReviewsBadge } from "@/components/GoogleReviewsBadge";
 import { testimonialsConfig } from "@/config/site";
-import { Section, SectionHeading } from "@/components/ui";
+import { Section } from "@/components/ui";
 
 export function Testimonials() {
   const [featured, ...rest] = testimonialsConfig.reviews;
-  const secondary = rest;
 
   return (
-    <Section id="testimonials" className="bg-charcoal">
+    <Section id="testimonials" className="bg-ivory">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <SectionHeading
-          eyebrow="Google reviews"
-          headline={testimonialsConfig.headline}
-          subheadline={testimonialsConfig.subheadline}
-          light
-          compact
-        />
-        <div className="shrink-0 sm:mb-8">
-          <GoogleReviewsBadge variant="featured" />
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-forest">
+            Google reviews
+          </p>
+          <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-charcoal sm:text-4xl">
+            {testimonialsConfig.headline}
+          </h2>
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-body">
+            {testimonialsConfig.subheadline}
+          </p>
         </div>
+        <GoogleReviewsBadge variant="featured" />
       </div>
 
-      <blockquote className="mt-2 max-w-3xl border-l-2 border-forest pl-5 sm:pl-6">
-        <p className="font-display text-lg leading-relaxed text-ivory sm:text-xl lg:text-[1.65rem]">
-          “{featured.quote}”
-        </p>
-        <footer className="mt-4 text-sm font-semibold text-ivory/80">
-          — {featured.author}
-          {featured.source && (
-            <span className="font-normal text-ivory/50"> · {featured.source}</span>
-          )}
-        </footer>
-      </blockquote>
+      <div className="mt-10 grid gap-5 lg:grid-cols-12 lg:gap-6">
+        <blockquote className="border border-stone/80 bg-ivory-deep px-6 py-8 sm:px-8 sm:py-10 lg:col-span-5">
+          <p className="font-display text-5xl leading-none text-forest/30" aria-hidden="true">
+            “
+          </p>
+          <p className="mt-2 font-display text-xl leading-relaxed text-charcoal sm:text-2xl">
+            {featured.quote}
+          </p>
+          <footer className="mt-6 text-sm font-semibold text-charcoal">
+            {featured.author}
+            {featured.source && (
+              <span className="mt-1 block font-normal text-muted">{featured.source}</span>
+            )}
+          </footer>
+        </blockquote>
 
-      <ul className="mt-8 grid gap-px bg-ivory/10 sm:grid-cols-3">
-        {secondary.map((review) => (
-          <li
-            key={review.author}
-            className="bg-charcoal px-0 py-5 sm:px-5 sm:py-6 sm:last:nth-[3n+1]:col-span-3 sm:last:nth-[3n+2]:col-span-2"
-          >
-            <p className="text-sm leading-relaxed text-ivory/80">
-              “{review.quote}”
-            </p>
-            <p className="mt-3 text-sm font-semibold text-ivory">
-              — {review.author}
-            </p>
-          </li>
-        ))}
-      </ul>
+        <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+          {rest.map((review) => (
+            <li key={review.author} className="border border-stone/70 bg-ivory px-5 py-5">
+              <p className="font-display text-2xl leading-none text-forest/25" aria-hidden="true">
+                “
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-body">{review.quote}</p>
+              <p className="mt-4 text-sm font-semibold text-charcoal">{review.author}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </Section>
   );
 }

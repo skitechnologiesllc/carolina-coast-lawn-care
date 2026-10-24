@@ -30,12 +30,13 @@ export const navLinks = [
 
 export const heroConfig = {
   brand: "Carolina Coast Lawn Care",
-  headline: "Lawn care & landscaping for Longs and Horry County.",
+  placeLine: "Serving Longs, North Myrtle Beach, and Horry County",
+  headline: "Exceptional Lawn Care. Beautiful Outdoor Spaces.",
   subheadline:
-    "Owner-operated out of Longs, SC. Clean cuts, sharp beds, and outdoor work you can count on — from weekly mowing to full landscape installs.",
+    "Owner-operated from Longs. Weekly mowing, fertilization, landscaping, lighting, and outdoor installs — done with a schedule you can count on.",
   image: {
-    src: "/lawn1.jpeg",
-    alt: "Freshly cut Horry County lawn by Carolina Coast Lawn Care",
+    src: "/mainphoto.jpeg",
+    alt: "Manicured front lawn, palm trees, and landscaped beds at a Longs home",
   },
 };
 
@@ -48,27 +49,28 @@ export const trustBarConfig = [
 
 export const whyChooseUsConfig = {
   headline: "Why homeowners choose us",
-  subheadline: "A few things that matter when you hire a lawn company.",
+  subheadline:
+    "A local crew with a straightforward way of working — from the first estimate to the visits after it.",
   points: [
     {
-      title: "We keep the schedule we give you",
+      title: "Reliable Scheduling",
       description:
-        "You know when we’re coming. If something changes, you hear from us — not a no-show.",
+        "We respect your time and communicate clearly. You know when we’re coming, and if something changes, you hear from us.",
     },
     {
-      title: "You talk to the business directly",
+      title: "Direct Communication",
       description:
-        "Call or text and reach someone who knows the job. Questions get answered without bouncing around.",
+        "Customers speak directly with the people handling their property. Call or text and reach someone who knows the job.",
     },
     {
-      title: "Local crew, local yards",
+      title: "Locally Owned & Operated",
       description:
-        "We’re based in Longs and work Horry County every week — so your yard gets a crew that knows the area, not a rotating cast.",
+        "Based in Longs, SC, with a working understanding of local properties and lawn conditions across Horry County.",
     },
     {
-      title: "Clear estimates before we start",
+      title: "Straightforward Estimates",
       description:
-        "Tell us what you need. We’ll price it plainly so you can decide without pressure.",
+        "Clear pricing and expectations before work begins, so you can decide without pressure.",
     },
   ],
 };
@@ -107,18 +109,18 @@ export const testimonialsConfig = {
 };
 
 export const servicesConfig = {
-  headline: "Lawn care & outdoor services",
+  headline: "Services for the way your property is actually used",
   subheadline:
-    "Mowing, turf care, landscaping, and more — for homes across Horry County.",
+    "Mowing and turf care, landscaping, and the outdoor work that finishes a yard — for homes across Horry County.",
   services: serviceOfferings,
 };
 
 export const aboutConfig = {
-  headline: "Owner-operated out of Longs",
+  headline: "You’ll talk to the owner, not a call center",
   lead:
-    "Carolina Coast Lawn Care is run by Tyler Malinski — a local operator who stays involved in the work, not a call center routing jobs to whoever’s available.",
+    "Carolina Coast Lawn Care is run by Tyler Malinski in Longs. He stays involved in estimates, scheduling, and the standard you see when the work is finished.",
   paragraphs: [
-    "That means clearer communication, a crew that learns your property, and a standard you can see after the first few visits.",
+    "That keeps communication direct. Questions go to someone who knows your property, and the details of the yard don’t get handed off between visits.",
   ],
   bullets: [
     "Licensed and insured",
@@ -130,7 +132,7 @@ export const aboutConfig = {
 export const galleryConfig = {
   headline: "Recent work",
   subheadline:
-    "Real yards around Longs and Horry County — mowing, beds, rock, and outdoor cleanups.",
+    "Properties we’ve cared for around Longs and Horry County — mowing, beds, rock, and outdoor cleanups.",
   /** Reserved for true same-property pairs only — leave empty until real pairs exist */
   beforeAfterPairs: [] as {
     before: { src: string; alt: string; objectPosition?: string };
@@ -173,9 +175,9 @@ export const galleryConfig = {
 };
 
 export const serviceAreaConfig = {
-  headline: "Proudly serving Longs & Horry County",
+  headline: "Proudly Serving Longs & the Grand Strand",
   subheadline:
-    "Based in Longs, SC — we take care of lawns and outdoor spaces across Horry County.",
+    "Based in Longs, SC. We take care of lawns and outdoor spaces across Horry County, including the communities below.",
   areas: [
     "Longs",
     "North Myrtle Beach",
@@ -211,7 +213,7 @@ export const faqConfig = {
     {
       question: "What services do you offer?",
       answer:
-        "Lawn mowing, fertilization and weed control, aeration, sod installation, landscaping, mulch and rock installation, hardscaping, irrigation, and pressure and soft washing. Ask if you need something else.",
+        "Lawn mowing, fertilization and weed control, aeration, sod installation, landscaping, landscape lighting, mulch and rock installation, hardscaping, irrigation, and pressure and soft washing. Ask if you need something else.",
     },
     {
       question: "How do I get on the schedule?",
@@ -226,15 +228,16 @@ export const faqConfig = {
 };
 
 export const ctaConfig = {
-  headline: "Ready for a yard you’re proud of?",
-  subheadline: "Tell us about the property — we’ll get back to you soon.",
+  headline: "Your Property Deserves Exceptional Care.",
+  subheadline:
+    "Tell us about the property. We’ll put together a free estimate and walk through what the work involves — no obligation to book.",
   buttonText: "Get a free estimate",
 };
 
 export const quoteFormConfig = {
   headline: "Get your free estimate",
   subheadline:
-    "Share a few details about your property. We’ll follow up within 24 hours.",
+    "Share a few details about your property. We’ll follow up — usually within one business day.",
   serviceOptions: [
     ...serviceOfferings.map((service) => service.formLabel),
     "Multiple Services",

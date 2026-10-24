@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Carolina Coast Lawn Care",
   },
   description:
-    "Owner-operated lawn care and landscaping in Longs and Horry County, SC. Mowing, fertilization, sod, hardscape, and more. Call, text, or request a free estimate.",
+    "Owner-operated lawn care and landscaping in Longs, North Myrtle Beach, and Horry County, SC. Mowing, fertilization, landscaping, and more. Call, text, or request a free estimate.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     siteName: "Carolina Coast Lawn Care",
     title: "Carolina Coast Lawn Care | Lawn Care & Landscaping in Longs, SC",
     description:
-      "Owner-operated lawn care and landscaping in Longs and Horry County, SC. Free estimates.",
+      "Owner-operated lawn care and landscaping in Longs, North Myrtle Beach, and Horry County, SC. Free estimates.",
     images: [{ url: "/lawn1.jpeg", alt: "Carolina Coast Lawn Care project" }],
   },
   twitter: {

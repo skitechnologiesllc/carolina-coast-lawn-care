@@ -35,7 +35,7 @@ export function SectionHeading({
         </p>
       )}
       <h2
-        className={`font-display text-2xl font-semibold tracking-tight sm:text-3xl lg:text-4xl ${
+        className={`font-display text-[1.75rem] font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.65rem] ${
           light ? "text-ivory" : "text-charcoal"
         }`}
       >
@@ -62,7 +62,7 @@ type SectionProps = {
 
 export function Section({ id, children, className = "" }: SectionProps) {
   return (
-    <section id={id} className={`py-10 sm:py-14 lg:py-20 ${className}`}>
+    <section id={id} className={`scroll-mt-28 py-14 sm:py-16 lg:py-24 ${className}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>
     </section>
   );

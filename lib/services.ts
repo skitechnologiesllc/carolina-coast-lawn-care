@@ -54,7 +54,7 @@ export const serviceOfferings: ServiceOffering[] = [
     image: {
       src: "/fertilization-aerial.jpeg",
       alt: "Aerial view showing the two middle lawns we service",
-      objectPosition: "center center",
+      objectPosition: "center 64%",
     },
     imageCaption:
       "Aerial view showing the two center lawns we service. Surrounding properties are neighboring homes.",
@@ -130,6 +130,26 @@ export const serviceOfferings: ServiceOffering[] = [
     ],
   },
   {
+    slug: "landscape-lighting",
+    name: "Landscape Lighting",
+    shortName: "Landscape Lighting",
+    formLabel: "Landscape Lighting",
+    image: {
+      src: "/additional%20photo.jpeg",
+      alt: "Nighttime landscape lighting on palms, garden beds, and a coastal home",
+      objectPosition: "center 38%",
+    },
+    cardDescription:
+      "Professionally installed lighting for walkways, garden beds, and outdoor living spaces.",
+    description:
+      "Enhance your property's curb appeal, safety, and nighttime beauty with professionally installed landscape lighting. We offer outdoor lighting solutions for walkways, garden beds, landscape features, and outdoor living spaces.",
+    highlights: [
+      "Walkways, garden beds, and landscape features",
+      "Lighting planned for safety and nighttime curb appeal",
+      "Installs sized for outdoor living spaces",
+    ],
+  },
+  {
     slug: "mulch-rock-installation",
     name: "Mulch & Rock Installation",
     shortName: "Mulch & Rock Installation",
@@ -155,9 +175,9 @@ export const serviceOfferings: ServiceOffering[] = [
     shortName: "Hardscaping",
     formLabel: "Hardscaping",
     image: {
-      src: "/lawn4.jpeg",
-      alt: "Defined stone beds and borders framing a front lawn",
-      objectPosition: "center 30%",
+      src: "/lawn5.jpeg",
+      alt: "Concrete walkway running beside a maintained residential lawn",
+      objectPosition: "center 62%",
     },
     cardDescription:
       "Patios, walkways, and borders built for everyday use around your home.",

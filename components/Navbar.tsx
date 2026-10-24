@@ -33,28 +33,28 @@ export function Navbar() {
 
   return (
     <header
-      className={`border-b border-border/80 bg-ivory/97 backdrop-blur-sm transition-shadow duration-200 ${
-        scrolled ? "shadow-[0_1px_0_rgba(26,28,25,0.06)]" : ""
+      className={`border-b border-stone/70 bg-ivory/95 backdrop-blur-md transition-shadow duration-200 ${
+        scrolled ? "shadow-[0_8px_24px_rgba(26,28,25,0.06)]" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 sm:py-2 lg:px-8 lg:py-2.5">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 sm:px-6 lg:px-8">
         <Link href="/" className="shrink-0" aria-label="Carolina Coast Lawn Care home">
           <Image
             src="/logo.jpg"
             alt="Carolina Coast Lawn Care"
             width={320}
             height={104}
-            className="h-[3.75rem] w-auto sm:h-[4.25rem] lg:h-[4.75rem]"
+            className="h-14 w-auto sm:h-16 lg:h-[4.5rem]"
             priority
           />
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-[0.9rem] font-medium tracking-wide text-charcoal transition-colors hover:text-forest"
+              className="text-sm font-medium tracking-wide text-charcoal/90 transition-colors hover:text-forest"
             >
               {link.label}
             </Link>
@@ -90,27 +90,34 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-border bg-ivory px-4 py-5 lg:hidden">
-          <nav className="flex flex-col gap-3.5" aria-label="Mobile">
+        <div className="border-t border-stone/70 bg-ivory px-4 py-6 lg:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col gap-1" aria-label="Mobile">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-base font-medium text-charcoal"
+                className="border-b border-stone/50 py-3.5 font-display text-2xl font-semibold text-charcoal"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
             <a
+              href={siteConfig.phoneHref}
+              className="pt-4 text-base font-semibold text-forest"
+              onClick={() => setMobileOpen(false)}
+            >
+              Call {siteConfig.phone}
+            </a>
+            <a
               href={siteConfig.smsHref}
-              className="text-base font-medium text-charcoal"
+              className="pb-2 text-base font-semibold text-forest"
               onClick={() => setMobileOpen(false)}
             >
               Text {siteConfig.phone}
             </a>
             <EstimateButton
-              className="mt-1 w-full text-center"
+              className="mt-2 w-full text-center"
               href={estimateHref}
               onNavigate={() => setMobileOpen(false)}
             >

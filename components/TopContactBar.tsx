@@ -56,7 +56,7 @@ function MailIcon() {
 export function TopContactBar() {
   return (
     <div className="bg-charcoal">
-      <div className="mx-auto flex h-10 max-w-7xl items-center justify-between gap-3 px-4 text-xs text-ivory/90 sm:px-6 sm:text-sm lg:px-8">
+      <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-3 px-4 text-[11px] text-ivory/85 sm:px-6 sm:text-xs lg:px-8">
         <div className="flex min-w-0 items-center gap-3 sm:gap-4">
           <a
             href={siteConfig.phoneHref}
