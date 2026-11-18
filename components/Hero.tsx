@@ -2,15 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { heroConfig, siteConfig } from "@/config/site";
 
-function headlineLines(headline: string) {
-  const parts = headline.split(". ").filter(Boolean);
-  return parts.map((part, index) =>
-    index < parts.length - 1 && !part.endsWith(".") ? `${part}.` : part
-  );
-}
-
 export function Hero() {
-  const lines = headlineLines(heroConfig.headline);
+  const [lineOne, lineTwo] = heroConfig.headline.split(". ");
 
   return (
     <section className="hero-editorial" aria-label="Introduction">
@@ -30,48 +23,45 @@ export function Hero() {
 
       <div className="hero-editorial__copy">
         <div className="relative z-10 w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-ivory/80 sm:text-xs sm:tracking-[0.22em]">
+          <p className="text-sm font-medium text-white/75">
             {heroConfig.placeLine}
           </p>
 
-          <h1 className="mt-4 max-w-xl font-display text-[2.35rem] font-semibold leading-[1.02] tracking-tight text-ivory sm:mt-5 sm:text-5xl sm:leading-[1.04] lg:max-w-2xl lg:text-[3.35rem]">
-            {lines.map((line) => (
-              <span key={line} className="block">
-                {line}
-              </span>
-            ))}
+          <h1 className="mt-4 max-w-3xl font-display text-[2.45rem] font-extrabold leading-[1.05] tracking-tight sm:mt-5 sm:text-[3.25rem] lg:text-[3.85rem]">
+            <span className="block text-white">{lineOne}.</span>
+            <span className="block text-lime">{lineTwo}</span>
           </h1>
 
-          <p className="mt-5 max-w-md text-base leading-relaxed text-ivory/90 sm:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-white/88 sm:text-lg">
             {heroConfig.subheadline}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Link
               href={siteConfig.estimateAnchor}
-              className="inline-flex h-12 items-center justify-center bg-forest px-6 text-sm font-semibold tracking-wide text-ivory transition-colors hover:bg-forest-hover"
+              className="inline-flex h-12 items-center justify-center rounded-sm bg-lime px-7 text-sm font-bold text-charcoal transition-colors hover:bg-lime-dark hover:text-white"
             >
               Get a Free Estimate
             </Link>
             <Link
               href="/#gallery"
-              className="inline-flex h-12 items-center justify-center border border-ivory/80 px-6 text-sm font-semibold tracking-wide text-ivory transition-colors hover:border-ivory hover:bg-ivory/10"
+              className="inline-flex h-12 items-center justify-center rounded-sm border border-white/80 px-7 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/10"
             >
-              Explore Our Work
+              View Our Work
             </Link>
           </div>
 
-          <p className="mt-5 text-sm text-ivory/80">
+          <p className="mt-5 text-sm text-white/75">
             <a
               href={siteConfig.phoneHref}
-              className="font-semibold text-ivory underline-offset-4 hover:underline"
+              className="font-semibold text-white underline-offset-4 hover:underline"
             >
               Call {siteConfig.phone}
             </a>
             <span aria-hidden="true"> · </span>
             <a
               href={siteConfig.smsHref}
-              className="font-semibold text-ivory underline-offset-4 hover:underline"
+              className="font-semibold text-white underline-offset-4 hover:underline"
             >
               Text us
             </a>

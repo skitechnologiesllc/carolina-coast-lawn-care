@@ -33,33 +33,38 @@ export function Navbar() {
 
   return (
     <header
-      className={`border-b border-stone/70 bg-ivory/95 backdrop-blur-md transition-shadow duration-200 ${
-        scrolled ? "shadow-[0_8px_24px_rgba(26,28,25,0.06)]" : ""
+      className={`border-b border-white/10 bg-charcoal transition-shadow duration-200 ${
+        scrolled ? "shadow-[0_8px_24px_rgba(0,0,0,0.28)]" : ""
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 sm:px-6 lg:px-8">
-        <Link href="/" className="shrink-0" aria-label="Carolina Coast Lawn Care home">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-5 px-4 py-2 sm:px-6 lg:px-8">
+        <Link
+          href="/"
+          className="relative z-10 block shrink-0"
+          aria-label="Carolina Coast Lawn Care home"
+        >
           <Image
-            src="/logo.jpg"
+            src="/carolina-coast-logo-light.png"
             alt="Carolina Coast Lawn Care"
-            width={320}
-            height={104}
-            className="h-14 w-auto sm:h-16 lg:h-[4.5rem]"
+            width={404}
+            height={78}
+            className="h-11 w-auto sm:h-12 lg:h-[3.35rem]"
             priority
+            unoptimized
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium tracking-wide text-charcoal/90 transition-colors hover:text-forest"
+              className="text-[0.95rem] font-semibold text-white/90 transition-colors hover:text-lime"
             >
               {link.label}
             </Link>
           ))}
-          <EstimateButton href={estimateHref} className="px-5 py-2.5">
+          <EstimateButton variant="lime" href={estimateHref} className="px-5 py-2.5">
             Get Free Estimate
           </EstimateButton>
         </nav>
@@ -67,19 +72,13 @@ export function Navbar() {
         <div className="flex items-center gap-1 lg:hidden">
           <a
             href={siteConfig.phoneHref}
-            className="px-2.5 py-2 text-sm font-semibold text-forest"
+            className="px-2.5 py-2 text-sm font-semibold text-lime"
           >
             Call
           </a>
-          <a
-            href={siteConfig.smsHref}
-            className="hidden px-2.5 py-2 text-sm font-semibold text-forest sm:inline"
-          >
-            Text
-          </a>
           <button
             type="button"
-            className="p-2 text-charcoal"
+            className="p-2 text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
@@ -90,13 +89,13 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-stone/70 bg-ivory px-4 py-6 lg:hidden">
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1" aria-label="Mobile">
+        <div className="border-t border-white/10 bg-charcoal px-4 py-5 lg:hidden">
+          <nav className="mx-auto flex max-w-7xl flex-col" aria-label="Mobile">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="border-b border-stone/50 py-3.5 font-display text-2xl font-semibold text-charcoal"
+                className="py-3.5 text-lg font-semibold text-white transition-colors hover:text-lime"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
@@ -104,19 +103,20 @@ export function Navbar() {
             ))}
             <a
               href={siteConfig.phoneHref}
-              className="pt-4 text-base font-semibold text-forest"
+              className="pt-3 text-base font-semibold text-lime"
               onClick={() => setMobileOpen(false)}
             >
               Call {siteConfig.phone}
             </a>
             <a
               href={siteConfig.smsHref}
-              className="pb-2 text-base font-semibold text-forest"
+              className="pb-2 text-base font-semibold text-lime"
               onClick={() => setMobileOpen(false)}
             >
               Text {siteConfig.phone}
             </a>
             <EstimateButton
+              variant="lime"
               className="mt-2 w-full text-center"
               href={estimateHref}
               onNavigate={() => setMobileOpen(false)}

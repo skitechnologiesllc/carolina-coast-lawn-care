@@ -11,7 +11,7 @@ export function MobileStickyBar() {
     : siteConfig.estimateAnchor;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-charcoal/15 bg-charcoal/95 text-ivory backdrop-blur-sm lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-charcoal/95 text-white backdrop-blur-sm lg:hidden">
       <nav
         aria-label="Quick contact"
         className="mx-auto grid max-w-lg grid-cols-3 gap-px bg-charcoal/40 pb-[env(safe-area-inset-bottom)]"

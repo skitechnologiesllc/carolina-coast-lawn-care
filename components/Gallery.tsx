@@ -41,19 +41,18 @@ export function Gallery() {
   const open = ordered[active ?? -1];
 
   return (
-    <Section id="gallery" className="bg-charcoal">
+    <Section id="gallery" className="bg-white">
       <SectionHeading
         eyebrow="Portfolio"
         headline={galleryConfig.headline}
         subheadline={galleryConfig.subheadline}
-        light
         compact
       />
 
       <div className="grid gap-3 lg:grid-cols-12 lg:grid-rows-2 lg:gap-4">
         <GalleryFigure
           image={featured}
-          className="aspect-[4/3] sm:aspect-[16/10] lg:col-span-7 lg:row-span-2 lg:aspect-auto lg:min-h-[540px]"
+          className="aspect-[4/3] sm:aspect-[16/10] lg:col-span-7 lg:row-span-2 lg:aspect-auto lg:min-h-[560px]"
           sizes="(max-width: 1024px) 100vw, 58vw"
           onOpen={() => setActive(0)}
           featured
@@ -72,11 +71,11 @@ export function Gallery() {
         </div>
       </div>
 
-      <p className="mt-6 text-sm text-ivory/70">
+      <p className="mt-7 text-sm text-slate">
         Select a photo to view it larger.{" "}
         <a
           href={siteConfig.estimateAnchor}
-          className="font-semibold text-ivory underline-offset-4 hover:underline"
+          className="font-semibold text-forest underline-offset-4 hover:underline"
         >
           Request an estimate
         </a>{" "}
@@ -106,12 +105,12 @@ export function Gallery() {
                 style={{ objectPosition: open.objectPosition }}
               />
             </div>
-            <div className="mt-4 flex items-center justify-between gap-4 text-ivory">
-              <p className="font-display text-lg font-semibold">{open.caption}</p>
+            <div className="mt-4 flex items-center justify-between gap-4 text-white">
+              <p className="font-display text-lg font-bold">{open.caption}</p>
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  className="border border-ivory/30 px-3 py-2 text-sm"
+                  className="border border-white/30 px-3 py-2 text-sm"
                   onClick={() =>
                     setActive((current) =>
                       current === null ? current : (current - 1 + ordered.length) % ordered.length
@@ -122,7 +121,7 @@ export function Gallery() {
                 </button>
                 <button
                   type="button"
-                  className="border border-ivory/30 px-3 py-2 text-sm"
+                  className="border border-white/30 px-3 py-2 text-sm"
                   onClick={() =>
                     setActive((current) =>
                       current === null ? current : (current + 1) % ordered.length
@@ -133,7 +132,7 @@ export function Gallery() {
                 </button>
                 <button
                   type="button"
-                  className="bg-ivory px-3 py-2 text-sm font-semibold text-charcoal"
+                  className="bg-white px-3 py-2 text-sm font-semibold text-charcoal"
                   onClick={() => setActive(null)}
                 >
                   Close
@@ -177,8 +176,12 @@ function GalleryFigure({
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         style={{ objectPosition: image.objectPosition }}
       />
-      <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-transparent px-4 pb-4 pt-16 sm:px-5">
-        <p className={`font-semibold text-ivory ${featured ? "text-base sm:text-lg" : "text-xs sm:text-sm"}`}>
+      <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-charcoal/55 via-transparent to-transparent px-4 pb-3.5 pt-12">
+        <p
+          className={`font-semibold text-white ${
+            featured ? "text-sm sm:text-base" : "text-xs sm:text-sm"
+          }`}
+        >
           {image.caption}
         </p>
       </figcaption>

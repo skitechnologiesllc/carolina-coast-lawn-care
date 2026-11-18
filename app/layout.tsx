@@ -1,19 +1,20 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import { JsonLd } from "@/components/JsonLd";
 import { MobileStickyBar } from "@/components/MobileStickyBar";
 import { organizationJsonLd, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-manrope",
   display: "swap",
+  weight: ["500", "600", "700", "800"],
 });
 
-const sourceSans = Source_Sans_3({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-source-sans",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -54,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${fraunces.variable} ${sourceSans.variable} has-mobile-cta font-sans antialiased`}
+        className={`${manrope.variable} ${inter.variable} has-mobile-cta font-sans antialiased`}
       >
         <JsonLd data={organizationJsonLd()} />
         {children}

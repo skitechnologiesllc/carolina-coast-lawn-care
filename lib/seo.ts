@@ -80,7 +80,7 @@ export function organizationJsonLd() {
     url: absoluteUrl("/"),
     telephone: siteConfig.phone,
     email: siteConfig.email,
-    image: absoluteUrl("/logo.jpg"),
+    image: absoluteUrl("/carolina-coast-logo-nav.png"),
     areaServed: [
       {
         "@type": "City",

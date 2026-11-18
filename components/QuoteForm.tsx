@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { quoteFormConfig, siteConfig } from "@/config/site";
-import { Section } from "@/components/ui";
+import { Reveal } from "@/components/Reveal";
 
 type FormState = {
   name: string;
@@ -23,7 +23,7 @@ const initialForm: FormState = {
 };
 
 const fieldClass =
-  "h-12 w-full border border-stone/90 bg-ivory px-4 text-base text-charcoal outline-none transition-colors hover:border-forest/50 focus:border-forest focus:ring-2 focus:ring-forest/15";
+  "h-12 w-full border border-border bg-mist px-4 text-base text-charcoal outline-none transition-colors hover:border-forest/40 focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15";
 
 export function QuoteForm() {
   const [form, setForm] = useState<FormState>(initialForm);
@@ -77,199 +77,220 @@ export function QuoteForm() {
   };
 
   return (
-    <Section id="estimate" className="bg-ivory">
-      <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">
-        <aside className="lg:sticky lg:top-28 lg:col-span-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-forest">
-            Free estimate
-          </p>
-          <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-charcoal sm:text-4xl">
-            {quoteFormConfig.headline}
-          </h2>
-          <p className="mt-4 max-w-md text-base leading-relaxed text-body">
-            {quoteFormConfig.subheadline}
-          </p>
-
-          <ol className="mt-7 space-y-5">
-            <li>
-              <p className="font-display text-sm font-semibold tracking-[0.14em] text-forest">01</p>
-              <p className="mt-1 font-display text-lg font-semibold text-charcoal">
-                Tell us about your property
+    <section id="estimate" className="scroll-mt-32 bg-forest py-14 sm:py-16 lg:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">
+          <aside className="lg:col-span-5">
+            <Reveal>
+              <p className="text-sm font-semibold text-lime">Free estimate</p>
+              <h2 className="mt-3 font-display text-[1.9rem] font-extrabold tracking-tight text-white sm:text-[2.35rem] lg:text-[2.75rem]">
+                Ready for a yard
+                <span className="block text-lime">you’re proud of?</span>
+              </h2>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-white/75">
+                {quoteFormConfig.subheadline}
               </p>
-              <p className="mt-1 text-sm leading-relaxed text-body">
-                Share the service you need and a few details about your property.
+
+              <ol className="mt-8 space-y-5">
+                {[
+                  {
+                    step: "01",
+                    title: "Tell us about your property",
+                    body: "Share the service you need and a few details about your yard.",
+                  },
+                  {
+                    step: "02",
+                    title: "Receive your estimate",
+                    body: "We’ll review your request and follow up with next steps.",
+                  },
+                  {
+                    step: "03",
+                    title: "Schedule your service",
+                    body: "Choose a convenient time to move forward.",
+                  },
+                ].map((item) => (
+                  <li key={item.step} className="flex gap-4">
+                    <span className="font-display text-sm font-extrabold text-lime">
+                      {item.step}
+                    </span>
+                    <div>
+                      <p className="font-display text-base font-bold text-white">
+                        {item.title}
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-white/65">
+                        {item.body}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <p className="mt-8 text-sm text-white/75">
+                Prefer to talk now?{" "}
+                <a
+                  href={siteConfig.phoneHref}
+                  className="font-bold text-white underline-offset-4 hover:underline"
+                >
+                  Call {siteConfig.phone}
+                </a>
               </p>
-            </li>
-            <li>
-              <p className="font-display text-sm font-semibold tracking-[0.14em] text-forest">02</p>
-              <p className="mt-1 font-display text-lg font-semibold text-charcoal">
-                Receive your estimate
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-body">
-                We&apos;ll review your request and follow up with the next steps.
-              </p>
-            </li>
-            <li>
-              <p className="font-display text-sm font-semibold tracking-[0.14em] text-forest">03</p>
-              <p className="mt-1 font-display text-lg font-semibold text-charcoal">
-                Schedule your service
-              </p>
-              <p className="mt-1 text-sm leading-relaxed text-body">
-                Choose a convenient time to move forward.
-              </p>
-            </li>
-          </ol>
+            </Reveal>
+          </aside>
 
-          <ul className="mt-7 space-y-3 border-y border-stone/80 py-5 text-sm text-charcoal">
-            <li>
-              <a
-                href={siteConfig.phoneHref}
-                className="font-semibold underline-offset-2 hover:text-forest hover:underline"
-              >
-                Call {siteConfig.phone}
-              </a>
-              <span aria-hidden="true"> · </span>
-              <a
-                href={siteConfig.smsHref}
-                className="font-semibold underline-offset-2 hover:text-forest hover:underline"
-              >
-                Text us
-              </a>
-            </li>
-            <li>Licensed &amp; insured</li>
-            <li>Serving Longs &amp; Horry County</li>
-          </ul>
-
-          <p className="mt-5 text-sm leading-relaxed text-muted">No obligation to book.</p>
-        </aside>
-
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-4 border border-stone/80 bg-ivory-deep p-5 sm:p-8 lg:col-span-8"
-        >
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div>
-              <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-charcoal">
-                Full name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                autoComplete="name"
-                value={form.name}
-                onChange={handleChange}
-                className={fieldClass}
-              />
-            </div>
-            <div>
-              <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-charcoal">
-                Phone
-              </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                required
-                autoComplete="tel"
-                value={form.phone}
-                onChange={handleChange}
-                className={fieldClass}
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-charcoal">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              autoComplete="email"
-              value={form.email}
-              onChange={handleChange}
-              className={fieldClass}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="address" className="mb-1.5 block text-sm font-medium text-charcoal">
-              Service address
-            </label>
-            <input
-              id="address"
-              name="address"
-              type="text"
-              required
-              autoComplete="street-address"
-              value={form.address}
-              onChange={handleChange}
-              className={fieldClass}
-            />
-          </div>
-
-          <div>
-            <label htmlFor="service" className="mb-1.5 block text-sm font-medium text-charcoal">
-              Service needed
-            </label>
-            <select
-              id="service"
-              name="service"
-              required
-              value={form.service}
-              onChange={handleChange}
-              className={fieldClass}
+          <Reveal className="lg:col-span-7" delayMs={80}>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-5 bg-white p-5 sm:p-8"
             >
-              <option value="" disabled>
-                Select a service
-              </option>
-              {quoteFormConfig.serviceOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-          </div>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="mb-1.5 block text-sm font-semibold text-charcoal"
+                  >
+                    Full name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    className={fieldClass}
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="mb-1.5 block text-sm font-semibold text-charcoal"
+                  >
+                    Phone
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    autoComplete="tel"
+                    value={form.phone}
+                    onChange={handleChange}
+                    className={fieldClass}
+                  />
+                </div>
+              </div>
 
-          <div>
-            <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-charcoal">
-              Anything else we should know?
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={4}
-              value={form.message}
-              onChange={handleChange}
-              className="w-full border border-stone/90 bg-ivory px-4 py-3 text-base text-charcoal outline-none transition-colors hover:border-forest/50 focus:border-forest focus:ring-2 focus:ring-forest/15"
-            />
-          </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mb-1.5 block text-sm font-semibold text-charcoal"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  className={fieldClass}
+                />
+              </div>
 
-          <button
-            type="submit"
-            disabled={status === "loading"}
-            className="h-12 w-full bg-forest px-6 text-base font-semibold text-ivory transition-colors hover:bg-forest-hover disabled:cursor-not-allowed disabled:opacity-60"
-          >
-            {status === "loading" ? "Sending..." : "Request free estimate"}
-          </button>
+              <div>
+                <label
+                  htmlFor="address"
+                  className="mb-1.5 block text-sm font-semibold text-charcoal"
+                >
+                  Service address
+                </label>
+                <input
+                  id="address"
+                  name="address"
+                  type="text"
+                  required
+                  autoComplete="street-address"
+                  value={form.address}
+                  onChange={handleChange}
+                  className={fieldClass}
+                />
+              </div>
 
-          {status === "success" && (
-            <p className="border border-forest/30 bg-ivory px-4 py-3 text-sm font-medium text-forest" role="status">
-              Thank you. We’ll follow up — usually within one business day.
-            </p>
-          )}
+              <div>
+                <label
+                  htmlFor="service"
+                  className="mb-1.5 block text-sm font-semibold text-charcoal"
+                >
+                  Service needed
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  required
+                  value={form.service}
+                  onChange={handleChange}
+                  className={fieldClass}
+                >
+                  <option value="" disabled>
+                    Select a service
+                  </option>
+                  {quoteFormConfig.serviceOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-          {status === "error" && (
-            <p className="border border-red-300 bg-ivory px-4 py-3 text-sm font-medium text-red-800" role="alert">
-              {errorMessage}
-            </p>
-          )}
-        </form>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="mb-1.5 block text-sm font-semibold text-charcoal"
+                >
+                  Anything else we should know?
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  value={form.message}
+                  onChange={handleChange}
+                  className="w-full border border-border bg-mist px-4 py-3 text-base text-charcoal outline-none transition-colors hover:border-forest/40 focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="h-12 w-full bg-lime px-6 text-base font-bold text-charcoal transition-colors hover:bg-lime-dark hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {status === "loading" ? "Sending..." : "Request free estimate"}
+              </button>
+
+              {status === "success" && (
+                <p
+                  className="border border-forest/20 bg-mist px-4 py-3 text-sm font-medium text-forest"
+                  role="status"
+                >
+                  Thank you. We’ll follow up — usually within one business day.
+                </p>
+              )}
+
+              {status === "error" && (
+                <p
+                  className="border border-red-200 bg-mist px-4 py-3 text-sm font-medium text-red-800"
+                  role="alert"
+                >
+                  {errorMessage}
+                </p>
+              )}
+            </form>
+          </Reveal>
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }

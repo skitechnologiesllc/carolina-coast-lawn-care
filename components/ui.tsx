@@ -8,6 +8,7 @@ type SectionHeadingProps = {
   centered?: boolean;
   light?: boolean;
   eyebrow?: string;
+  accentHeadline?: boolean;
   compact?: boolean;
 };
 
@@ -17,35 +18,40 @@ export function SectionHeading({
   centered = false,
   light = false,
   eyebrow,
+  accentHeadline = false,
   compact = false,
 }: SectionHeadingProps) {
   return (
     <div
-      className={`${compact ? "mb-6 md:mb-8" : "mb-8 md:mb-10 lg:mb-12"} ${
+      className={`${compact ? "mb-8 md:mb-10" : "mb-10 md:mb-12 lg:mb-14"} ${
         centered ? "text-center" : ""
       }`}
     >
       {eyebrow && (
         <p
-          className={`mb-2 text-xs font-semibold uppercase tracking-[0.18em] sm:mb-3 ${
-            light ? "text-ivory/70" : "text-forest"
+          className={`mb-3 text-sm font-semibold ${
+            light ? "text-lime" : "text-forest"
           }`}
         >
           {eyebrow}
         </p>
       )}
       <h2
-        className={`font-display text-[1.75rem] font-semibold leading-[1.15] tracking-tight sm:text-4xl lg:text-[2.65rem] ${
-          light ? "text-ivory" : "text-charcoal"
+        className={`font-display text-[1.9rem] font-extrabold tracking-tight text-balance sm:text-[2.35rem] lg:text-[2.75rem] ${
+          light
+            ? "text-white"
+            : accentHeadline
+              ? "text-forest"
+              : "text-charcoal"
         }`}
       >
         {headline}
       </h2>
       {subheadline && (
         <p
-          className={`mt-3 max-w-2xl text-base leading-relaxed sm:mt-4 sm:text-lg ${
+          className={`mt-4 max-w-2xl text-base leading-relaxed sm:text-lg ${
             centered ? "mx-auto" : ""
-          } ${light ? "text-ivory/80" : "text-body"}`}
+          } ${light ? "text-white/70" : "text-slate"}`}
         >
           {subheadline}
         </p>
@@ -62,7 +68,10 @@ type SectionProps = {
 
 export function Section({ id, children, className = "" }: SectionProps) {
   return (
-    <section id={id} className={`scroll-mt-28 py-14 sm:py-16 lg:py-24 ${className}`}>
+    <section
+      id={id}
+      className={`scroll-mt-32 py-14 sm:py-16 lg:py-24 ${className}`}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">{children}</div>
     </section>
   );

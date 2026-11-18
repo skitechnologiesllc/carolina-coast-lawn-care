@@ -39,7 +39,7 @@ export function GoogleReviewsBadge({
       href={siteConfig.googleReviewsUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group inline-flex items-center gap-3 border border-ivory/25 bg-ivory text-charcoal shadow-sm transition-all hover:border-forest/40 hover:bg-ivory-deep hover:shadow-md ${
+      className={`group inline-flex items-center gap-3 border border-border bg-white text-charcoal transition-all hover:border-forest/30 ${
         isFeatured ? "px-5 py-3.5" : "px-3 py-2"
       }`}
       aria-label="View Carolina Coast Lawn Care on Google Reviews"
@@ -57,12 +57,12 @@ export function GoogleReviewsBadge({
               />
             ))}
           </div>
-          <span className={`font-bold ${isFeatured ? "text-xl" : "text-sm"}`}>
+          <span className={`font-extrabold ${isFeatured ? "text-xl" : "text-sm"}`}>
             5.0
           </span>
         </div>
         <span
-          className={`leading-tight text-muted transition-colors group-hover:text-forest ${
+          className={`leading-tight text-slate transition-colors group-hover:text-forest ${
             isFeatured ? "text-sm font-medium" : "text-[11px]"
           }`}
         >

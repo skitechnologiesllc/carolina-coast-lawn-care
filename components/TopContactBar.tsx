@@ -1,6 +1,5 @@
 import { siteConfig } from "@/config/site";
 
-/** Static inline icons — avoid Lucide SSR/client attribute mismatches */
 function PhoneIcon() {
   return (
     <svg
@@ -55,19 +54,19 @@ function MailIcon() {
 
 export function TopContactBar() {
   return (
-    <div className="bg-charcoal">
-      <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-3 px-4 text-[11px] text-ivory/85 sm:px-6 sm:text-xs lg:px-8">
+    <div className="border-b border-white/10 bg-forest">
+      <div className="mx-auto flex h-9 max-w-7xl items-center justify-between gap-3 px-4 text-[11px] text-white/85 sm:px-6 sm:text-xs lg:px-8">
         <div className="flex min-w-0 items-center gap-3 sm:gap-4">
           <a
             href={siteConfig.phoneHref}
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-ivory"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
           >
             <PhoneIcon />
             <span>Call {siteConfig.phone}</span>
           </a>
           <a
             href={siteConfig.smsHref}
-            className="inline-flex items-center gap-1.5 transition-colors hover:text-ivory"
+            className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
           >
             <MessageIcon />
             <span>Text us</span>
@@ -75,7 +74,7 @@ export function TopContactBar() {
         </div>
         <a
           href={`mailto:${siteConfig.email}`}
-          className="inline-flex min-w-0 items-center gap-1.5 transition-colors hover:text-ivory"
+          className="inline-flex min-w-0 items-center gap-1.5 transition-colors hover:text-white"
         >
           <MailIcon />
           <span className="truncate">{siteConfig.email}</span>

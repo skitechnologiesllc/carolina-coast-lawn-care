@@ -44,46 +44,44 @@ export function ServicePage({ service }: ServicePageProps) {
                   style={{ objectPosition: service.image.objectPosition }}
                 />
                 <div
-                  className="absolute inset-0 bg-gradient-to-r from-charcoal/92 via-charcoal/78 to-charcoal/45"
+                  className="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/72 to-charcoal/40"
                   aria-hidden="true"
                 />
               </>
             ) : (
               <div
-                className="absolute inset-0 bg-[linear-gradient(135deg,#1a1c19_0%,#12291f_55%,#1a1c19_100%)]"
+                className="absolute inset-0 bg-[linear-gradient(135deg,#141816_0%,#103c28_55%,#141816_100%)]"
                 aria-hidden="true"
               />
             )}
           </div>
 
-          <div className="relative mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ivory/55">
-              Service
-            </p>
-            <h1 className="mt-3 max-w-3xl font-display text-3xl font-semibold tracking-tight text-ivory sm:text-5xl">
+          <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
+            <p className="text-sm font-semibold text-lime">Service</p>
+            <h1 className="mt-3 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-white sm:text-[2.75rem]">
               {service.name} in Longs &amp; Horry County
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ivory/85">
+            <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85">
               {service.description}
             </p>
             {service.imageCaption && (
-              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-ivory/65">
+              <p className="mt-4 max-w-2xl text-sm leading-relaxed text-white/60">
                 {service.imageCaption}
               </p>
             )}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <EstimateButton variant="light" href={siteConfig.estimateHash}>
+              <EstimateButton variant="lime" href={siteConfig.estimateHash}>
                 Get a free estimate
               </EstimateButton>
               <a
                 href={siteConfig.phoneHref}
-                className="text-sm font-semibold text-ivory underline-offset-4 hover:underline"
+                className="text-sm font-semibold text-white underline-offset-4 hover:underline"
               >
                 Call {siteConfig.phone}
               </a>
               <a
                 href={siteConfig.smsHref}
-                className="text-sm font-semibold text-ivory/80 underline-offset-4 hover:text-ivory hover:underline"
+                className="text-sm font-semibold text-white/80 underline-offset-4 hover:text-white hover:underline"
               >
                 Text us
               </a>
@@ -91,17 +89,18 @@ export function ServicePage({ service }: ServicePageProps) {
           </div>
         </section>
 
-        <section className="bg-ivory py-12 sm:py-14 lg:py-16">
+        <section className="bg-white py-12 sm:py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="font-display text-2xl font-semibold text-charcoal sm:text-3xl">
+            <h2 className="font-display text-2xl font-extrabold tracking-tight text-charcoal sm:text-3xl">
               What you can expect
             </h2>
             <ul className="mt-6 space-y-0 border-t border-border sm:mt-8">
               {service.highlights.map((item) => (
                 <li
                   key={item}
-                  className="border-b border-border py-3.5 text-base text-body sm:py-4"
+                  className="flex items-start gap-3 border-b border-border py-3.5 text-base text-slate sm:py-4"
                 >
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 bg-lime" aria-hidden="true" />
                   {item}
                 </li>
               ))}
@@ -109,37 +108,31 @@ export function ServicePage({ service }: ServicePageProps) {
           </div>
         </section>
 
-        <section className="bg-ivory-deep py-12 sm:py-14">
+        <section className="bg-mist py-12 sm:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="font-display text-2xl font-semibold text-charcoal">
+            <h2 className="font-display text-2xl font-extrabold tracking-tight text-charcoal">
               Related services
             </h2>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
               {related.map((item) => (
                 <li key={item.slug}>
                   <Link
                     href={`/services/${item.slug}`}
-                    className="group relative block overflow-hidden border border-border bg-ivory transition-colors hover:border-forest/50"
+                    className="group relative block overflow-hidden border border-border bg-white transition-all hover:border-forest/35 hover:shadow-[0_10px_24px_rgba(20,24,22,0.07)]"
                   >
-                    <div className="relative aspect-[16/9] bg-forest-hover">
+                    <div className="relative aspect-[16/9] overflow-hidden bg-forest">
                       {item.image ? (
-                        <>
-                          <Image
-                            src={item.image.src}
-                            alt={item.image.alt}
-                            fill
-                            sizes="(max-width: 1024px) 50vw, 25vw"
-                            className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                            style={{ objectPosition: item.image.objectPosition }}
-                          />
-                          <div
-                            className="absolute inset-0 bg-charcoal/25 transition-colors group-hover:bg-charcoal/15"
-                            aria-hidden="true"
-                          />
-                        </>
+                        <Image
+                          src={item.image.src}
+                          alt={item.image.alt}
+                          fill
+                          sizes="(max-width: 1024px) 50vw, 25vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                          style={{ objectPosition: item.image.objectPosition }}
+                        />
                       ) : null}
                     </div>
-                    <span className="block px-4 py-3 text-sm font-semibold text-charcoal transition-colors group-hover:text-forest">
+                    <span className="block px-4 py-3 text-sm font-bold text-charcoal transition-colors group-hover:text-forest">
                       {item.name}
                     </span>
                   </Link>

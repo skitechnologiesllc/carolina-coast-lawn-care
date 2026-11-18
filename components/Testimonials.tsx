@@ -1,55 +1,86 @@
+import { Star } from "lucide-react";
 import { GoogleReviewsBadge } from "@/components/GoogleReviewsBadge";
-import { testimonialsConfig } from "@/config/site";
+import { testimonialsConfig, siteConfig } from "@/config/site";
 import { Section } from "@/components/ui";
+import { Reveal } from "@/components/Reveal";
+
+function StarRow() {
+  return (
+    <div className="flex gap-0.5" aria-label="5 star rating">
+      {Array.from({ length: 5 }).map((_, index) => (
+        <Star
+          key={index}
+          className="h-4 w-4 fill-[#FBBC04] text-[#FBBC04]"
+          aria-hidden="true"
+        />
+      ))}
+    </div>
+  );
+}
 
 export function Testimonials() {
-  const [featured, ...rest] = testimonialsConfig.reviews;
+  const featured = testimonialsConfig.reviews.slice(0, 3);
+  const hasMore = testimonialsConfig.reviews.length > 3;
 
   return (
-    <Section id="testimonials" className="bg-ivory">
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-forest">
-            Google reviews
-          </p>
-          <h2 className="mt-3 font-display text-[1.75rem] font-semibold leading-[1.15] tracking-tight text-charcoal sm:text-4xl">
-            {testimonialsConfig.headline}
-          </h2>
-          <p className="mt-3 max-w-xl text-base leading-relaxed text-body">
-            {testimonialsConfig.subheadline}
-          </p>
+    <Section id="testimonials" className="bg-white">
+      <Reveal>
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="text-sm font-semibold text-forest">Google reviews</p>
+            <h2 className="mt-3 font-display text-[1.9rem] font-extrabold tracking-tight text-charcoal sm:text-[2.35rem]">
+              {testimonialsConfig.headline}
+            </h2>
+            <p className="mt-3 max-w-xl text-base leading-relaxed text-slate sm:text-lg">
+              {testimonialsConfig.subheadline}
+            </p>
+          </div>
+          <GoogleReviewsBadge variant="featured" />
         </div>
-        <GoogleReviewsBadge variant="featured" />
-      </div>
+      </Reveal>
 
-      <div className="mt-10 grid gap-5 lg:grid-cols-12 lg:gap-6">
-        <blockquote className="border border-stone/80 bg-ivory-deep px-6 py-8 sm:px-8 sm:py-10 lg:col-span-5">
-          <p className="font-display text-5xl leading-none text-forest/30" aria-hidden="true">
-            “
-          </p>
-          <p className="mt-2 font-display text-xl leading-relaxed text-charcoal sm:text-2xl">
-            {featured.quote}
-          </p>
-          <footer className="mt-6 text-sm font-semibold text-charcoal">
-            {featured.author}
-            {featured.source && (
-              <span className="mt-1 block font-normal text-muted">{featured.source}</span>
-            )}
-          </footer>
-        </blockquote>
+      <ul className="mt-10 grid gap-5 lg:grid-cols-3 lg:gap-6">
+        {featured.map((review, index) => (
+          <li key={review.author}>
+            <Reveal delayMs={index * 70}>
+              <article className="flex h-full flex-col bg-mist p-6 sm:p-7">
+                <div className="flex items-center justify-between gap-3">
+                  <StarRow />
+                  <span className="text-xs font-semibold uppercase tracking-wide text-slate">
+                    Google
+                  </span>
+                </div>
+                <blockquote className="mt-5 flex-1">
+                  <p className="text-[0.95rem] leading-relaxed text-charcoal">
+                    “{review.quote}”
+                  </p>
+                </blockquote>
+                <footer className="mt-6 border-t border-border pt-4">
+                  <p className="font-display text-sm font-bold text-charcoal">
+                    {review.author}
+                  </p>
+                  {review.source && (
+                    <p className="mt-0.5 text-sm text-slate">{review.source}</p>
+                  )}
+                </footer>
+              </article>
+            </Reveal>
+          </li>
+        ))}
+      </ul>
 
-        <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-          {rest.map((review) => (
-            <li key={review.author} className="border border-stone/70 bg-ivory px-5 py-5">
-              <p className="font-display text-2xl leading-none text-forest/25" aria-hidden="true">
-                “
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-body">{review.quote}</p>
-              <p className="mt-4 text-sm font-semibold text-charcoal">{review.author}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {hasMore && (
+        <div className="mt-8">
+          <a
+            href={siteConfig.googleReviewsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-semibold text-forest underline-offset-4 hover:underline"
+          >
+            Read more reviews on Google →
+          </a>
+        </div>
+      )}
     </Section>
   );
 }

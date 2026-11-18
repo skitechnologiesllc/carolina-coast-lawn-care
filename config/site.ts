@@ -33,51 +33,60 @@ export const heroConfig = {
   placeLine: "Serving Longs, North Myrtle Beach, and Horry County",
   headline: "Exceptional Lawn Care. Beautiful Outdoor Spaces.",
   subheadline:
-    "Owner-operated from Longs. Weekly mowing, fertilization, landscaping, lighting, and outdoor installs — done with a schedule you can count on.",
+    "Dependable service. Exceptional results. Professional lawn care and landscaping throughout Longs, North Myrtle Beach, and the Grand Strand.",
   image: {
     src: "/mainphoto.jpeg",
-    alt: "Manicured front lawn, palm trees, and landscaped beds at a Longs home",
+    alt: "Elevated coastal home with palm trees, manicured lawn, and landscaped beds",
   },
 };
 
 export const trustBarConfig = [
-  { label: "5.0 on Google", href: siteConfig.googleReviewsUrl, external: true },
-  { label: "Licensed & insured" },
-  { label: "Locally owned in Longs" },
-  { label: "Free estimates" },
+  {
+    label: "5-Star Google Rating",
+    href: siteConfig.googleReviewsUrl,
+    external: true,
+    icon: "star" as const,
+  },
+  { label: "Licensed & Insured", icon: "shield" as const },
+  { label: "Locally Owned & Operated", icon: "home" as const },
+  { label: "Free Estimates", icon: "clipboard" as const },
 ];
 
 export const whyChooseUsConfig = {
   headline: "Why homeowners choose us",
   subheadline:
-    "A local crew with a straightforward way of working — from the first estimate to the visits after it.",
+    "Straightforward service from a local team that shows up, communicates clearly, and takes pride in the finished yard.",
   points: [
     {
       title: "Reliable Scheduling",
       description:
-        "We respect your time and communicate clearly. You know when we’re coming, and if something changes, you hear from us.",
+        "You know when we’re coming. If something changes, you hear from us — no guessing, no last-minute surprises.",
+      icon: "calendar" as const,
     },
     {
       title: "Direct Communication",
       description:
-        "Customers speak directly with the people handling their property. Call or text and reach someone who knows the job.",
+        "Call or text and reach someone who knows your property. Questions go to the people doing the work.",
+      icon: "message" as const,
     },
     {
       title: "Locally Owned & Operated",
       description:
-        "Based in Longs, SC, with a working understanding of local properties and lawn conditions across Horry County.",
+        "Based in Longs, SC, with a real understanding of local yards and lawn conditions across Horry County.",
+      icon: "map" as const,
     },
     {
-      title: "Straightforward Estimates",
+      title: "Honest, Upfront Pricing",
       description:
         "Clear pricing and expectations before work begins, so you can decide without pressure.",
+      icon: "check" as const,
     },
   ],
 };
 
 export const testimonialsConfig = {
   headline: "What customers say",
-  subheadline: "Reviews from homeowners on Google.",
+  subheadline: "Real reviews from homeowners on Google.",
   reviews: [
     {
       quote:
@@ -109,18 +118,18 @@ export const testimonialsConfig = {
 };
 
 export const servicesConfig = {
-  headline: "Services for the way your property is actually used",
+  headline: "Our services",
   subheadline:
-    "Mowing and turf care, landscaping, and the outdoor work that finishes a yard — for homes across Horry County.",
+    "From weekly mowing to full outdoor upgrades — consistent quality for homes across Horry County.",
   services: serviceOfferings,
 };
 
 export const aboutConfig = {
-  headline: "You’ll talk to the owner, not a call center",
+  headline: "Your Property. Our Reputation.",
   lead:
-    "Carolina Coast Lawn Care is run by Tyler Malinski in Longs. He stays involved in estimates, scheduling, and the standard you see when the work is finished.",
+    "Carolina Coast Lawn Care is owned and operated by Tyler Malinski in Longs. When you hire us, you’re working with a local business that puts its name on every property it cares for.",
   paragraphs: [
-    "That keeps communication direct. Questions go to someone who knows your property, and the details of the yard don’t get handed off between visits.",
+    "Tyler stays involved from the first estimate through the finished result — so communication stays direct, details don’t get lost, and the workmanship reflects the standards he puts on his own reputation.",
   ],
   bullets: [
     "Licensed and insured",
@@ -130,34 +139,28 @@ export const aboutConfig = {
 };
 
 export const galleryConfig = {
-  headline: "Recent work",
+  headline: "Our Work Speaks for Itself.",
   subheadline:
-    "Properties we’ve cared for around Longs and Horry County — mowing, beds, rock, and outdoor cleanups.",
+    "Real projects from homes around Longs and Horry County — clean lines, finished beds, and yards that look cared for.",
   /** Reserved for true same-property pairs only — leave empty until real pairs exist */
   beforeAfterPairs: [] as {
     before: { src: string; alt: string; objectPosition?: string };
     after: { src: string; alt: string; objectPosition?: string };
   }[],
-  /** Project photos (exclude hero lawn1). Captions describe the work shown. */
+  /** Project photos — avoid repeating the hero image when possible */
   images: [
-    {
-      src: "/lawn6.jpeg",
-      alt: "Front yard landscaping with stone beds and fresh turf",
-      objectPosition: "center 35%",
-      caption: "Landscape refresh",
-      featured: true,
-    },
     {
       src: "/lawn2.jpeg",
       alt: "Backyard lawn with sharp mowing lines",
       objectPosition: "center 40%",
       caption: "Weekly mowing",
+      featured: true,
     },
     {
-      src: "/lawn4.jpeg",
-      alt: "Decorative rock beds and tree ring",
-      objectPosition: "center 22%",
-      caption: "Rock beds & tree ring",
+      src: "/fertilized-lawn-mulch-job.jpeg",
+      alt: "Front yard with fresh mulch beds and fertilized green lawn",
+      objectPosition: "center 40%",
+      caption: "Mulch & lawn care",
     },
     {
       src: "/lawn3.jpg",
@@ -171,13 +174,19 @@ export const galleryConfig = {
       objectPosition: "center 30%",
       caption: "Precision edging",
     },
+    {
+      src: "/fertilized-lawn-c.jpeg",
+      alt: "Uniform green residential lawn after professional turf care",
+      objectPosition: "center 40%",
+      caption: "Healthy turf",
+    },
   ],
 };
 
 export const serviceAreaConfig = {
-  headline: "Proudly Serving Longs & the Grand Strand",
+  headline: "Proudly serving Longs and the Grand Strand",
   subheadline:
-    "Based in Longs, SC. We take care of lawns and outdoor spaces across Horry County, including the communities below.",
+    "Based in Longs, SC. We care for lawns and outdoor spaces across Horry County.",
   areas: [
     "Longs",
     "North Myrtle Beach",
@@ -193,7 +202,7 @@ export const serviceAreaConfig = {
 
 export const faqConfig = {
   headline: "Frequently asked questions",
-  subheadline: "Quick answers before you reach out.",
+  subheadline: "Straightforward answers before you reach out.",
   items: [
     {
       question: "Where are you based?",
@@ -227,17 +236,10 @@ export const faqConfig = {
   ],
 };
 
-export const ctaConfig = {
-  headline: "Your Property Deserves Exceptional Care.",
-  subheadline:
-    "Tell us about the property. We’ll put together a free estimate and walk through what the work involves — no obligation to book.",
-  buttonText: "Get a free estimate",
-};
-
 export const quoteFormConfig = {
   headline: "Get your free estimate",
   subheadline:
-    "Share a few details about your property. We’ll follow up — usually within one business day.",
+    "Tell us a little about your property. We’ll follow up — usually within one business day. No obligation to book.",
   serviceOptions: [
     ...serviceOfferings.map((service) => service.formLabel),
     "Multiple Services",

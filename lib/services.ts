@@ -36,7 +36,7 @@ export const serviceOfferings: ServiceOffering[] = [
       objectPosition: "center 45%",
     },
     cardDescription:
-      "Weekly or bi-weekly cuts with edging and cleanup — on a schedule you can count on.",
+      "Weekly or bi-weekly cuts with edging and cleanup on a schedule you can count on.",
     description:
       "Keep your grass looking sharp without chasing a crew. We mow on a steady weekly or bi-weekly schedule, edge along walks and beds, and blow off hard surfaces before we leave. Built for residential yards around Longs and across Horry County.",
     highlights: [
@@ -54,12 +54,12 @@ export const serviceOfferings: ServiceOffering[] = [
     image: {
       src: "/fertilization-aerial.jpeg",
       alt: "Aerial view showing the two middle lawns we service",
-      objectPosition: "center 64%",
+      objectPosition: "center 55%",
     },
     imageCaption:
       "Aerial view showing the two center lawns we service. Surrounding properties are neighboring homes.",
     cardDescription:
-      "Aerial view showing the two center lawns we service with fertilization and weed control.",
+      "Seasonal fertilization and weed control timed for how grass grows in Horry County.",
     description:
       "A good-looking lawn needs more than a sharp mower. We set up fertilization and weed-control visits timed for how grass actually grows here in Horry County — so you’re not guessing when to feed or spot-treat.",
     highlights: [
@@ -73,11 +73,6 @@ export const serviceOfferings: ServiceOffering[] = [
     name: "Aeration",
     shortName: "Aeration",
     formLabel: "Aeration",
-    image: {
-      src: "/fertilized-lawn-a.jpeg",
-      alt: "Thick, healthy residential turf after professional lawn care",
-      objectPosition: "center 40%",
-    },
     cardDescription:
       "Core aeration for compacted yards so water and nutrients reach the roots.",
     description:
@@ -93,11 +88,6 @@ export const serviceOfferings: ServiceOffering[] = [
     name: "Sod Installation",
     shortName: "Sod Installation",
     formLabel: "Sod Installation",
-    image: {
-      src: "/fertilized-lawn-c.jpeg",
-      alt: "Uniform green residential lawn with clean mowing lines",
-      objectPosition: "center 40%",
-    },
     cardDescription:
       "Bare spots and new lawns graded, prepped, and laid for a finished result.",
     description:
@@ -115,9 +105,9 @@ export const serviceOfferings: ServiceOffering[] = [
     formLabel: "Landscaping",
     featured: true,
     image: {
-      src: "/fertilized-lawn-mulch-job.jpeg",
-      alt: "Front yard with fresh mulch beds and a fertilized green lawn",
-      objectPosition: "center 35%",
+      src: "/lawn6.jpeg",
+      alt: "Completed landscaping with decorative rock beds, plantings, and maintained turf",
+      objectPosition: "center 38%",
     },
     cardDescription:
       "Beds, plantings, and outdoor upgrades planned around how you use your yard.",
@@ -134,15 +124,16 @@ export const serviceOfferings: ServiceOffering[] = [
     name: "Landscape Lighting",
     shortName: "Landscape Lighting",
     formLabel: "Landscape Lighting",
+    featured: true,
     image: {
       src: "/additional%20photo.jpeg",
       alt: "Nighttime landscape lighting on palms, garden beds, and a coastal home",
-      objectPosition: "center 38%",
+      objectPosition: "center 32%",
     },
     cardDescription:
-      "Professionally installed lighting for walkways, garden beds, and outdoor living spaces.",
+      "Outdoor lighting for walkways, garden beds, and living spaces you use after dark.",
     description:
-      "Enhance your property's curb appeal, safety, and nighttime beauty with professionally installed landscape lighting. We offer outdoor lighting solutions for walkways, garden beds, landscape features, and outdoor living spaces.",
+      "Well-placed lighting makes a yard safer and easier to enjoy after sunset. We install landscape lighting for walkways, garden beds, outdoor living areas, and key features around the home — planned for how you actually use the property.",
     highlights: [
       "Walkways, garden beds, and landscape features",
       "Lighting planned for safety and nighttime curb appeal",
@@ -154,10 +145,11 @@ export const serviceOfferings: ServiceOffering[] = [
     name: "Mulch & Rock Installation",
     shortName: "Mulch & Rock Installation",
     formLabel: "Mulch & Rock Installation",
+    featured: true,
     image: {
-      src: "/lawn6.jpeg",
-      alt: "Front yard landscape refresh with white rock beds and mulch",
-      objectPosition: "center 35%",
+      src: "/lawn4.jpeg",
+      alt: "Decorative rock beds and tree ring installation with clean lawn edges",
+      objectPosition: "center 28%",
     },
     cardDescription:
       "Fresh mulch or decorative rock with clean edges for beds that stay tidy.",
@@ -174,11 +166,6 @@ export const serviceOfferings: ServiceOffering[] = [
     name: "Hardscaping",
     shortName: "Hardscaping",
     formLabel: "Hardscaping",
-    image: {
-      src: "/lawn5.jpeg",
-      alt: "Concrete walkway running beside a maintained residential lawn",
-      objectPosition: "center 62%",
-    },
     cardDescription:
       "Patios, walkways, and borders built for everyday use around your home.",
     description:
@@ -194,11 +181,6 @@ export const serviceOfferings: ServiceOffering[] = [
     name: "Irrigation",
     shortName: "Irrigation",
     formLabel: "Irrigation",
-    image: {
-      src: "/fertilized-lawn-b.jpeg",
-      alt: "Lush green residential lawn that stays healthy with proper watering",
-      objectPosition: "center 45%",
-    },
     cardDescription:
       "Watering support so lawns and beds stay healthy through dry stretches.",
     description:
@@ -214,6 +196,7 @@ export const serviceOfferings: ServiceOffering[] = [
     name: "Pressure & Soft Washing",
     shortName: "Pressure & Soft Washing",
     formLabel: "Pressure & Soft Washing",
+    featured: true,
     image: {
       src: "/soft-wash-house.jpeg",
       alt: "Home exterior during a soft wash and pressure washing job",

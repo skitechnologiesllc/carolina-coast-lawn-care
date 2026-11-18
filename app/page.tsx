@@ -9,7 +9,6 @@ import { Testimonials } from "@/components/Testimonials";
 import { About } from "@/components/About";
 import { ServiceArea } from "@/components/ServiceArea";
 import { FAQ } from "@/components/FAQ";
-import { CTA } from "@/components/CTA";
 import { QuoteForm } from "@/components/QuoteForm";
 import { Footer } from "@/components/Footer";
 
@@ -30,7 +29,6 @@ export default function Home() {
         <About />
         <ServiceArea />
         <FAQ />
-        <CTA />
         <QuoteForm />
       </main>
       <Footer />
